@@ -54,7 +54,6 @@ The docs tree is the repository's long-term memory. Agents and humans ground the
 | [process/r2r.md](process/r2r.md)                               | Requirement-to-Review — the meeting → diff → grill → spec loop      |
 | [process/definition-of-done.md](process/definition-of-done.md) | The checklist that gates every merge                                |
 | [process/painted-door.md](process/painted-door.md)             | How designers/PMs ship UI experiments safely                        |
-| [process/kickoff-prompt.md](process/kickoff-prompt.md)         | The first prompt to send in a fresh clone, before the project brief |
 
 ## Templates (artifacts skills instantiate)
 

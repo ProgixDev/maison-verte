@@ -11,8 +11,8 @@ reports all live here. Duplicating a fact elsewhere is a bug. The upgrade in pro
 SSR Supabase, production-readiness, design, skills) is tracked in `UPGRADE-ROADMAP.md` and grounded
 in the cited briefs under `docs/research/`.
 
-> Note: the old `/progix` "four-surface" front door (ADR-0005) is retired; some skills still
-> reference Notion/GitHub orchestration and are de-Notioned during the docs/skill rebuild.
+> Note: the old `/progix` "four-surface" front door (ADR-0005) and `/meeting-intake` (Notion R2R)
+> have been **removed** (ADR-0006). New projects start by cloning and running `/setup-project`.
 
 ## The loop
 
@@ -32,14 +32,14 @@ Right-size the process. Do not write a spec for a typo.
 | ----------- | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | **Quick**   | Bug fixes, copy changes, small refactors, dependency bumps                             | Ground → implement → verify → PR. No spec.                                                                                    |
 | **Feature** | New user-visible behavior, new module, schema/contract changes, anything > ~half a day | `/create-spec` → `/plan-feature` → `/implement-feature` → `/verify-ui` → `/review` → `/feature-report` → `/update-docs`       |
-| **R2R**     | A requirement changed in a meeting after delivery started                              | `/meeting-intake` (transcript → add/change/remove diff + grill) → feeds the Quick or Feature track. See `docs/process/r2r.md` |
+| **R2R**     | A requirement changed in a meeting after delivery started                              | Update the affected spec/PRD directly (add/change/remove), then re-enter the Quick or Feature track. See `docs/process/r2r.md` |
 
 ## Non-negotiable obligations (hold even when the prompt omits them)
 
 These bind every change. A prompt that doesn't mention them does not waive them — surface the conflict instead of skipping the obligation (ADR-0005, Constitution Art. XI).
 
 - **Skills & agents are the default tools.** Use the relevant skill for spec, plan, implement, verify, review, report, docs — don't hand-roll those procedures. Delegate noisy/parallel work to the agents in `.claude/agents/`.
-- **A feature has a PRD and a spec.** Product intent lives in the PRD (`/write-prd`, mirrored to Notion); the change is governed by a spec (`/create-spec`). No feature-track code without both.
+- **A feature has a PRD and a spec.** Product intent lives in the PRD (`/write-prd`, in the repo); the change is governed by a spec (`/create-spec`). No feature-track code without both.
 - **Evidence, not confidence.** `pnpm verify` green + acceptance criteria mapped to passing tests + inspected screenshots for UI. The harness, not the author, attests.
 - **The boring work is automated, not skipped.** Serious problems auto-file a GitHub issue (`scripts/auto-issue.mjs`); daily activity is reported automatically. Don't suppress these.
 
@@ -103,11 +103,11 @@ UI work is verified by driving the running app: `pnpm e2e:shots` captures screen
 
 ## Skills available
 
-**Project lifecycle:** `/progix` (the one front door for a new project — interview → Notion → GitHub → init → design prompt), `/setup-project` (clone init, called by `/progix`), `/write-prd`, `/design-prompt`.
+**Project lifecycle:** `/setup-project` (clone init — names the app, fills vision/CODEOWNERS), `/write-prd`, `/design-prompt`.
 
-**Delivery loop:** `/create-spec`, `/plan-feature`, `/implement-feature`, `/verify-ui`, `/review`, `/feature-report`, `/update-docs`, `/new-module`, `/meeting-intake` (R2R), `/daily-report`, `/encode-lesson`.
+**Delivery loop:** `/create-spec`, `/plan-feature`, `/implement-feature`, `/verify-ui`, `/review`, `/feature-report`, `/update-docs`, `/new-module`, `/security-review`, `/web-readiness`, `/daily-report`, `/encode-lesson`.
 
-Each is defined in `.claude/skills/` and explains itself. Reviewer personas + automation agents live in `.claude/agents/` (frontend-architect, appsec-reviewer, qa-verifier, docs-curator, daily-reporter, requirement-analyst) and judge against `docs/personas/`.
+Each is defined in `.claude/skills/` and explains itself. Reviewer personas + automation agents live in `.claude/agents/` (frontend-architect, appsec-reviewer, qa-verifier, docs-curator) and judge against `docs/personas/`.
 
 ## When you are unsure
 
