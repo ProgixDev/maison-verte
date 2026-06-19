@@ -1,17 +1,29 @@
 ---
 name: design-prompt
-description: Generate the Claude Design prompt as a clean, copy-paste .md from the filled project context (PRD, intake, brand). Use as /progix step 7, or when the user says "design prompt", "prompt for Claude Design", or is about to start the UI/UX pass. The prompt contains NO code — design only; coding stays in Claude Code.
+description: Generate a PROFESSIONAL Claude Design brief (token contract + anti-vibe-coding constraints) as a clean copy-paste .md for a web app. Use when the user says "design prompt", "design brief", "prompt for Claude Design", or is about to start the UI/UX pass. Design intent only — no code.
 argument-hint: [project name]
-allowed-tools: Read Write Glob Grep AskUserQuestion WebSearch
+allowed-tools: Read, Write, Glob, Grep, AskUserQuestion, WebSearch
 ---
 
 ## Task
 
-Write `docs/design/<project>-design-prompt.md` for **$ARGUMENTS**, ready to paste straight into Claude Design.
+Produce `design/<project>-design-prompt.md` — a single copy-paste block for Claude Design that
+produces **professional, not vibe-coded** pages. The difference between a cheap prompt and this one
+is a pasted **token contract**, **specific reference/cultural anchors**, **mandatory states**, and an
+explicit **DO-NOT list**.
 
-1. **Source the context:** `docs/product/prd.md`, `docs/product/overview.md`, the intake answers, brand/logo notes. The design prompt is a brief, not a spec — it describes the experience to design, never how to build it.
-2. **Research the moving parts (2026).** If the project names fast-changing tech that affects UX or feasibility (Expo SDK capabilities, platform UI conventions, new component patterns), do a quick `WebSearch` pass so the brief is current — this is the rule that prevents compatibility surprises later in the frontend prompt.
-3. **Fill the template** `docs/templates/claude-design-prompt.md`: product · users & primary journeys · surfaces to design (mobile/landing/admin + key screens) · visual direction (personality, brand, references) · expected result & quality bar (real states: empty/loading/error/success) · out of scope.
-4. **Cue the visual references.** The prompt should explicitly expect attached images from Pinterest / Behance / Dribbble, with a line per reference on what to borrow (the visual, not the function). Remind the user to attach them when pasting.
-5. **No code rule (hard):** if you catch yourself writing component names, props, or snippets, stop — that belongs to Claude Code. The output is pure design intent.
-6. **Output hygiene:** clean Markdown, copy-paste-able as a single block, no repo-internal jargon. End with the reminder: paste into Claude Design, attach references, export the result as a ZIP back to Cowork for `/progix` step-4 handoff to Claude Code.
+1. **Read the bar + contract:** `docs/design/quality-bar.md`, `docs/templates/claude-design-prompt.md`,
+   `docs/conventions/styling.md`, and `src/app/globals.css`. The brief MUST embed the real token
+   contract and the DO-NOT list — never a generic "make it clean and modern".
+2. **Source the product context** from the PRD (`docs/product/`) if present, else ask the user
+   (AskUserQuestion) for: product + core action + emotional register; the pages to design; primary
+   user + moment; tone words; 2–3 named reference products; optional cultural anchor. One round.
+3. **Rebrand away from the defaults (critical):** the skeleton ships the **default shadcn neutral
+   theme** — the recognizable AI tell. Instruct a distinctive palette for THIS app (replace the
+   oklch role tokens; keep role names). For fast-moving platform patterns, a quick `WebSearch`.
+4. **Fill the template** with this project's specifics: realistic sample data (never lorem), named +
+   cultural anchors, the token contract as design values, required states for **every** page
+   (incl. 404/500/auth/empty/loading/error), accessibility (keyboard + focus), the **DO-NOT** list.
+   Keep the multi-pass + 3-directions + self-critique process.
+5. **No-code rule (hard):** design intent only — no component names, props, class names, or code.
+6. **Output:** clean Markdown, one copy-paste block; remind the user to attach 3–5 reference images.

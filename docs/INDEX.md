@@ -22,9 +22,16 @@ The docs tree is the repository's long-term memory. Agents and humans ground the
 
 ## Web production-readiness
 
-| File                                     | What it answers                                          |
-| ---------------------------------------- | -------------------------------------------------------- |
-| [web/checklist.md](web/checklist.md)     | `WEB-*` launch checklist (SEO, PWA, errors, a11y, perf); `pnpm web:check` |
+| File                                 | What it answers                                                          |
+| ------------------------------------ | ----------------------------------------------------------------------- |
+| [web/checklist.md](web/checklist.md) | `WEB-*` launch checklist (SEO, PWA, errors, a11y, perf); `pnpm web:check` |
+
+## Design
+
+| File                                                       | What it answers                                              |
+| ---------------------------------------------------------- | ----------------------------------------------------------- |
+| [design/quality-bar.md](design/quality-bar.md)             | Premium vs "vibe-coded"; the checklist every page must clear |
+| [templates/claude-design-prompt.md](templates/claude-design-prompt.md) | The professional design brief (`/design-prompt` fills it)   |
 
 ## Conventions (how we write code)
 
