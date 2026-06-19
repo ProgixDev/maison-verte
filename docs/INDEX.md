@@ -10,6 +10,15 @@ The docs tree is the repository's long-term memory. Agents and humans ground the
 | [architecture/module-boundaries.md](architecture/module-boundaries.md) | Where code may live and what it may import (ESLint-enforced) |
 | [architecture/decisions/](architecture/decisions/README.md)            | ADRs — why the stack and structure are what they are         |
 
+## Security
+
+| File                                             | What it answers                                            |
+| ------------------------------------------------ | ---------------------------------------------------------- |
+| [security/threat-model.md](security/threat-model.md) | Assets, trust boundaries, attacker classes, data classes |
+| [security/checklist.md](security/checklist.md)   | The enforceable `SEC-*` rule catalog                       |
+
+(Coverage matrix lives in `SECURITY.md` at the repo root.)
+
 ## Conventions (how we write code)
 
 | File                                                   | Scope                                            |

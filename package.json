@@ -21,8 +21,10 @@
     "e2e:ui": "playwright test --ui",
     "check:docs": "node scripts/check-docs.mjs",
     "check:typography": "node scripts/check-typography.mjs",
+    "secrets:check": "node scripts/check-secrets.mjs",
+    "secrets:scan": "gitleaks dir --no-banner --redact || echo 'gitleaks not installed — skipping deep scan (brew install gitleaks). check-secrets still ran.'",
     "report:pdf": "node scripts/report-to-pdf.mjs",
-    "verify": "pnpm lint && pnpm typecheck && pnpm format:check && pnpm check:docs && pnpm check:typography && pnpm test && pnpm build",
+    "verify": "pnpm lint && pnpm typecheck && pnpm format:check && pnpm check:docs && pnpm check:typography && pnpm secrets:check && pnpm test && pnpm build",
     "prepare": "husky || true"
   },
   "lint-staged": {
