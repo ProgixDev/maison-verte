@@ -107,6 +107,8 @@ UI work is verified by driving the running app: `pnpm e2e:shots` captures screen
 
 **Delivery loop:** `/create-spec`, `/plan-feature`, `/implement-feature`, `/verify-ui`, `/review`, `/feature-report`, `/update-docs`, `/new-module`, `/security-review`, `/web-readiness`, `/daily-report`, `/encode-lesson`.
 
+**Feature packs:** `/add-feature <pack>` installs a ready-made, web-native feature from `packs/` (payments-stripe, chat-realtime, media-upload). Packs are parked outside the app (excluded from tsconfig/ESLint/build) and ship working background + a swappable shadcn placeholder UI. Catalog + philosophy: `packs/README.md`.
+
 Each is defined in `.claude/skills/` and explains itself. Reviewer personas + automation agents live in `.claude/agents/` (frontend-architect, appsec-reviewer, qa-verifier, docs-curator) and judge against `docs/personas/`.
 
 ## When you are unsure
