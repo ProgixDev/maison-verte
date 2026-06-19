@@ -9,6 +9,10 @@ import { z } from "zod";
  */
 const serverEnvSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
+  // Server-only secrets. NEVER prefix these NEXT_PUBLIC_ — they must not reach the
+  // browser. The Supabase service_role key bypasses RLS; use it only in trusted
+  // server code (e.g. the account-deletion route). Optional until you wire it up.
+  SUPABASE_SERVICE_ROLE_KEY: z.string().min(20).optional(),
   // Add real server vars here, mirrored in .env.example, e.g.:
   // DATABASE_URL: z.string().url(),
 });

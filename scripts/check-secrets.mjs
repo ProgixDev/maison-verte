@@ -38,7 +38,7 @@ const IGNORE_DIRS = new Set([
   "e2e",
 ]);
 // Files that legitimately contain the patterns (detectors / env guard / tests).
-const IGNORE_FILES = new Set(["check-secrets.mjs", "logger.ts", "env.ts"]);
+const IGNORE_FILES = new Set(["check-secrets.mjs", "logger.ts", "env.ts", "env.client.ts"]);
 
 function walk(dir, exts, out = []) {
   if (!existsSync(dir)) return out;
