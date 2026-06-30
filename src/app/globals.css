@@ -1,60 +1,92 @@
 @import "tailwindcss";
 
 /*
- * Design tokens — Tailwind v4 CSS-first config (docs/conventions/styling.md).
- * Semantic tokens below are the only colors features may use.
- * shadcn/ui-compatible naming so `pnpm dlx shadcn add <component>` drops in cleanly.
+ * Design tokens — Maison Verte Québec (Tailwind v4 CSS-first, docs/conventions/styling.md).
+ * The brand palette is the single source of color: features use these tokens, never raw hex.
+ * shadcn/ui semantic names are retuned to the brand so the UI primitives stay on-brand.
  */
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --radius: 0.625rem;
-}
+  /* Brand palette */
+  --cream: #f3f7e7; /* page background */
+  --cream-soft: #eaf4de; /* text/surfaces on dark green */
+  --ink: #243027; /* default body text */
+  --pine: #123d2b; /* headings, dark green */
+  --pine-deep: #0f3322; /* footer background */
+  --pine-deeper: #0c2c1e; /* CTA panels */
+  --forest: #2e7d33; /* primary green accent */
+  --lime: #c7f03c; /* lime accent / primary CTA */
+  --lime-hover: #bbe82f;
+  --brick: #be3a2b; /* urgency red */
+  --card: #fbfdf5; /* card surface */
+  --sage: #ecf2dc; /* light section / soft fill */
+  --mint: #cdebd4; /* icon badge fill */
+  --leaf: #ddf3c8; /* success badge fill */
+  --blush: #f6dad4; /* warning/red badge fill */
+  --moss: #3d4d40; /* prose on light */
+  --fern: #46553f; /* secondary text */
+  --stone: #5c6b5e; /* muted text */
+  --haze: #7a8a7a; /* faint text / fine print */
+  --on-pine: #c0d6b7; /* body text on pine */
+  --on-pine-soft: #afc8a6; /* softer body text on pine */
+  --olive: #a4bc9c; /* footer body text */
+  --sage-link: #cfe0c8; /* footer links */
+  --pine-mute: #7e997a; /* footer headings / fine print */
+  --gold: #e8b23a; /* star rating */
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  /* shadcn semantic tokens, retuned to the brand */
+  --background: var(--cream);
+  --foreground: var(--ink);
+  --card-foreground: var(--ink);
+  --popover: var(--card);
+  --popover-foreground: var(--ink);
+  --primary: var(--pine);
+  --primary-foreground: var(--cream-soft);
+  --secondary: var(--sage);
+  --secondary-foreground: var(--pine);
+  --muted: var(--sage);
+  --muted-foreground: var(--stone);
+  --accent: var(--lime);
+  --accent-foreground: var(--pine);
+  --destructive: var(--brick);
+  --destructive-foreground: #ffffff;
+  --border: rgba(18, 61, 43, 0.1);
+  --input: rgba(18, 61, 43, 0.18);
+  --ring: var(--forest);
+  --radius: 0.875rem;
 }
 
 @theme inline {
+  /* Brand colors as utilities (bg-lime, text-pine, border-forest, …) */
+  --color-cream: var(--cream);
+  --color-cream-soft: var(--cream-soft);
+  --color-ink: var(--ink);
+  --color-pine: var(--pine);
+  --color-pine-deep: var(--pine-deep);
+  --color-pine-deeper: var(--pine-deeper);
+  --color-forest: var(--forest);
+  --color-lime: var(--lime);
+  --color-lime-hover: var(--lime-hover);
+  --color-brick: var(--brick);
+  --color-card: var(--card);
+  --color-sage: var(--sage);
+  --color-mint: var(--mint);
+  --color-leaf: var(--leaf);
+  --color-blush: var(--blush);
+  --color-moss: var(--moss);
+  --color-fern: var(--fern);
+  --color-stone: var(--stone);
+  --color-haze: var(--haze);
+  --color-on-pine: var(--on-pine);
+  --color-on-pine-soft: var(--on-pine-soft);
+  --color-olive: var(--olive);
+  --color-sage-link: var(--sage-link);
+  --color-pine-mute: var(--pine-mute);
+  --color-gold: var(--gold);
+
+  /* shadcn semantic aliases */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
@@ -71,21 +103,88 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --font-sans: var(--font-hanken), system-ui, sans-serif;
+  --font-serif: var(--font-dm-serif), Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
 @layer base {
   * {
-    border-color: var(--color-border);
-    outline-color: color-mix(in oklab, var(--color-ring) 50%, transparent);
+    border-color: var(--border);
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
   }
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--cream);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--lime);
+    color: var(--pine);
+  }
+  :focus-visible {
+    outline: 3px solid var(--forest);
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* Brand keyframes (recreated from the prototype). Motion is opt-out via reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes mvq-pulse {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.45;
+      transform: scale(0.78);
+    }
+  }
+  @keyframes mvq-step-in {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes mvq-pop {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .mvq-pulse {
+    animation: mvq-pulse 1.7s ease-in-out infinite;
+  }
+  .mvq-step-in {
+    animation: mvq-step-in 0.42s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .mvq-pop {
+    animation: mvq-pop 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   }
 }

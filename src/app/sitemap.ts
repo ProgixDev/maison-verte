@@ -1,7 +1,25 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/core/site";
 
-/** Add a row per public, indexable route. Keep auth/account/api out. */
+const routes = [
+  "/",
+  "/admissibilite",
+  "/subventions",
+  "/subventions/logisvert",
+  "/subventions/camt",
+  "/fonctionnement",
+  "/faq",
+  "/a-propos",
+  "/confidentialite",
+] as const;
+
+/** One row per public, indexable route. Keep auth/account/api out. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [{ url: site.url, lastModified: new Date(), changeFrequency: "weekly", priority: 1 }];
+  const lastModified = new Date();
+  return routes.map((path) => ({
+    url: `${site.url}${path === "/" ? "" : path}`,
+    lastModified,
+    changeFrequency: "weekly",
+    priority: path === "/" ? 1 : path === "/admissibilite" ? 0.9 : 0.7,
+  }));
 }

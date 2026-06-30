@@ -1,64 +1,50 @@
-# NEXTJS-SKELETON
+# Maison Verte Québec
 
-A production-grade Next.js starting point built on one premise: **AI agents write most of the code, the repository itself guarantees the quality.** Docs carry the knowledge, specs carry the intent, gates enforce the taste, screenshots prove the result.
+Site web de **Maison Verte Québec** — un service qui aide les propriétaires québécois à obtenir leurs subventions de chauffage (LogisVert d’Hydro-Québec et le CAMT fédéral, jusqu’à 16 950 $) et les met en relation avec un installateur certifié RBQ.
 
-> Agents: your entry point is [AGENTS.md](AGENTS.md). Humans: keep reading.
+Refonte construite à partir d’un design Claude Design, recréée à l’identique en Next.js.
 
 ## Stack
 
-Next.js 16 (App Router, RSC) · TypeScript strict · Tailwind CSS v4 + shadcn/ui · Zustand 5 · Motion · Vitest + Testing Library · Playwright · pnpm · ESLint 9 (+ enforced module boundaries) · Prettier · Husky + commitlint.
+Next.js 16 (App Router, RSC) · TypeScript strict · Tailwind CSS v4 (tokens de marque) · Zustand 5 · Motion · DM Serif Display + Hanken Grotesk · lucide-react · Vitest + Testing Library · Playwright · pnpm · ESLint 9 (frontières de modules) · Prettier · Husky + commitlint.
 
-## Quickstart
+## Démarrage
 
 ```bash
-corepack enable                       # or: npm i -g pnpm
+corepack enable                       # ou : npm i -g pnpm
 pnpm install
-pnpm exec playwright install chromium # once, for e2e + PDF rendering
 pnpm dev                              # http://localhost:3000
-pnpm verify                           # the full local gate (same as CI)
-pnpm e2e:shots                        # CUJ tests + screenshot evidence
+pnpm verify                           # la barrière locale complète (lint, types, format, tests, build)
 ```
 
-For AI-driven work, open the repo in Claude Code (or any agent that reads `AGENTS.md`) and start with `/create-spec`.
+## Pages
 
-## How work happens here
+| Route                    | Contenu                                                                    |
+| ------------------------ | -------------------------------------------------------------------------- |
+| `/`                      | Accueil — hero vidéo, deux programmes, fonctionnement, témoignages, FAQ     |
+| `/admissibilite`         | Quiz d’admissibilité interactif (estimation LogisVert + CAMT, formulaire)   |
+| `/subventions`           | Vue d’ensemble des deux programmes + cumul                                 |
+| `/subventions/logisvert` | LogisVert (Hydro-Québec) — barème, conditions, documents, délais           |
+| `/subventions/camt`      | CAMT (Ressources naturelles Canada) — montants, conditions, urgence        |
+| `/fonctionnement`        | Les 5 étapes de l’accompagnement                                           |
+| `/faq`                   | Foire aux questions                                                        |
+| `/a-propos`              | Notre histoire, notre équipe, nos valeurs                                  |
+| `/confidentialite`       | Politique de confidentialité (Loi 25)                                      |
 
-| You want to…                | Do                                                                                                                           |
-| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Start a new project         | **`/progix`** — one front door: interview → Notion → GitHub → init → design prompt                                           |
-| Fix a bug / small change    | branch → implement → `pnpm verify` → PR (quick track)                                                                        |
-| Ship a feature              | `/create-spec` → `/plan-feature` → `/implement-feature` → `/verify-ui` → `/review` → `/feature-report` → PR → `/update-docs` |
-| Process a meeting (R2R)     | `/meeting-intake` → requirement diff + grill → feeds the tracks                                                              |
-| Add a feature module        | `/new-module <name>`                                                                                                         |
-| Make a correction permanent | `/encode-lesson`                                                                                                             |
+## Architecture
 
-**The repo is the only operating surface** — no Notion/Slack/GitHub-Actions layer, no cloud CI; verification runs locally (`pnpm verify` + Husky pre-commit). See [ADR-0006](docs/architecture/decisions/0006-repo-only-operating-model.md). Process, roles, and the R2R loop: [docs/process/workflow.md](docs/process/workflow.md) · [docs/process/r2r.md](docs/process/r2r.md).
+- `src/app/(marketing)/` — pages de contenu (Server Components) ; en-tête et pied de page de marque dans la mise en page partagée.
+- `src/app/admissibilite/` — le quiz, avec sa propre mise en page minimale.
+- `src/features/eligibility/` — la logique du quiz : store SSR-safe (factory + provider), questions à branches, validations, action serveur validée par zod (stub à brancher sur un CRM).
+- `src/components/layout/` — en-tête (bannière CAMT, nav, tiroir mobile) et pied de page.
+- `src/components/ui/` — primitives (`CtaLink`, `Eyebrow`, `Reveal`, `CountUp`, `FaqAccordion`, `FinalCta`, `Photo`).
+- `src/app/globals.css` — la palette de marque comme tokens Tailwind v4.
 
-## Map
+## À faire (prochaines étapes)
 
-```
-AGENTS.md            agent operating model (CLAUDE.md imports it)
-docs/                the knowledge tree — INDEX.md is the map
-specs/               constitution + feature specs (SDD)
-.claude/             skills, reviewer subagents, hooks, path rules
-src/app|features|components|hooks|lib|core   layered code (ESLint-enforced)
-e2e/                 Playwright CUJ tests → artifacts/screenshots evidence
-docs/reports/        generated feature reports (diff + screenshots + verdicts)
-scripts/             repo gates (docs links, typography) + report-to-PDF
-.github/             CI: quality gates, e2e + evidence upload, AI persona review
-```
+- Brancher le formulaire d’admissibilité sur un vrai backend (Supabase / CRM) — l’action `recordLead` est un stub validé.
+- Remplacer les coordonnées substituts (téléphone, courriels) dans l’en-tête, le pied de page et la page de confidentialité.
 
-## CI
+---
 
-Three workflows run on every PR: **CI** (lint/types/format/docs/typography/tests/build), **E2E** (Playwright + screenshot artifacts), and **Claude persona review** (AI review board against `docs/personas/` — needs the `ANTHROPIC_API_KEY` secret; set it up with `/install-github-app` from Claude Code). Branch protection on `main` should require the first two.
-
-## Cloning this skeleton for a new project
-
-1. Create the repo from this template (GitHub "Use this template", or `npx degit DigitariaWebs/nextjs-skeleton my-project`).
-2. Open it in Claude Code and run **`/progix`** — the one front door. It interviews you, fills the Notion project, creates the GitHub repo under DigitariaWebs, initializes the clone (via `/setup-project`), writes the PRD, and emits the Claude Design prompt. (`/setup-project <name>` still works standalone if you only want the repo init.) First time? Rehearse safely with **`/progix <name> --dry-run`** — it plans everything and creates nothing.
-3. Do the two steps only a human can: protect `main` (require CI + E2E) and add the `ANTHROPIC_API_KEY` secret (`/install-github-app`).
-4. Write your first spec: `/create-spec`.
-
-## Why it's built this way
-
-Every structural decision has an ADR in [docs/architecture/decisions/](docs/architecture/decisions/README.md). The two-page version: [docs/architecture/overview.md](docs/architecture/overview.md) and the engineering [constitution](specs/constitution.md).
+Ce dépôt est construit sur un harnais d’ingénierie piloté par agents : voir [AGENTS.md](AGENTS.md) pour le modèle de fonctionnement, et `docs/` pour les conventions.

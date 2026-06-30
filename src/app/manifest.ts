@@ -8,9 +8,9 @@ export default function manifest(): MetadataRoute.Manifest {
     description: site.description,
     start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#0a0a0a",
-    // TODO(app): add real PWA icons (192/512 PNG + maskable) to /public.
-    icons: [{ src: "/icon.svg", sizes: "any", type: "image/svg+xml" }],
+    background_color: "#f3f7e7",
+    theme_color: "#123d2b",
+    // TODO(app): add real maskable PWA icons (192/512 PNG) to /public.
+    icons: [{ src: "/logo-mark.png", sizes: "417x520", type: "image/png" }],
   };
 }
