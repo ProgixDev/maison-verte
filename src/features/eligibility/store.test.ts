@@ -77,7 +77,7 @@ describe("eligibility store", () => {
     expect(store.getState().step).toBe(0);
   });
 
-  it("rejects an invalid postal code and accepts a valid Québec one", () => {
+  it("rejects a malformed postal code and accepts any valid Canadian one", () => {
     const store = createEligibilityStore();
     store.getState().setPostal("12345");
     store.getState().submitPostal();
@@ -88,6 +88,18 @@ describe("eligibility store", () => {
     store.getState().submitPostal();
     expect(store.getState().error).toBe("");
     expect(store.getState().step).toBe(1);
+  });
+
+  it("accepts non-Québec and loosely-formatted postal codes (regression)", () => {
+    // The postal code is collected, not scored — every province must pass, and
+    // casing / spacing should not matter.
+    for (const code of ["K1A 0A6", "M5V 2T6", "t2p1j9", "h2x  1y4"]) {
+      const store = createEligibilityStore();
+      store.getState().setPostal(code);
+      store.getState().submitPostal();
+      expect(store.getState().error, `expected ${code} to be accepted`).toBe("");
+      expect(store.getState().step).toBe(1);
+    }
   });
 
   it("blocks an incomplete lead and passes a complete one", () => {
