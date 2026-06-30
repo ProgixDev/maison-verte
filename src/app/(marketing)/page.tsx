@@ -130,8 +130,8 @@ export default function AccueilPage() {
           aria-hidden
           className="pointer-events-none absolute -top-[130px] -right-[90px] size-[440px] max-w-[80vw] rounded-full bg-[radial-gradient(circle,rgba(199,240,60,0.32),transparent_68%)]"
         />
-        <div className="relative mx-auto flex max-w-[1200px] flex-wrap items-center gap-[clamp(30px,5vw,58px)]">
-          <div className="min-w-[300px] flex-1 basis-[460px]">
+        <div className="relative mx-auto flex max-w-[1200px] flex-col items-center gap-[clamp(30px,5vw,58px)] lg:flex-row">
+          <div className="w-full min-w-0 lg:flex-1 lg:basis-[460px]">
             <Reveal>
               <Eyebrow icon={<BadgeDollarSign className="size-[15px]" />}>
                 Subventions chauffage · Québec 2026
@@ -150,10 +150,54 @@ export default function AccueilPage() {
                 On vous met en relation avec l’entreprise qui la rend possible.
               </span>
             </Reveal>
+
+            {/* Vidéo — vitrine mobile (luxe) */}
+            <Reveal delay={140} className="relative mt-8 lg:hidden">
+              <div
+                aria-hidden
+                className="bg-lime absolute -bottom-3 -left-3 h-[68%] w-[56%] -rotate-6 rounded-[34px]"
+              />
+              <div className="border-pine/10 bg-pine relative z-[1] aspect-[4/5] overflow-hidden rounded-[30px] border shadow-[0_30px_70px_rgba(18,61,43,0.30)] ring-1 ring-white/10">
+                <video
+                  className="size-full object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label="Maison Verte Québec — thermopompe et maison"
+                >
+                  <source src="/hero.mp4" type="video/mp4" />
+                </video>
+                <div
+                  aria-hidden
+                  className="absolute inset-x-0 bottom-0 h-2/5 bg-[linear-gradient(transparent,rgba(12,44,30,0.55))]"
+                />
+              </div>
+              <div className="bg-card/85 absolute top-4 -left-2 z-[2] rounded-[18px] border border-white/50 px-[18px] py-3 shadow-[0_16px_40px_rgba(18,61,43,0.26)] backdrop-blur-md">
+                <div className="text-stone text-[12px] font-semibold">jusqu’à</div>
+                <div className="text-pine font-serif text-[30px] leading-[1.04]">
+                  <CountUp to={16950} suffix=" $" />
+                </div>
+                <div className="text-stone mt-[2px] text-[11px]">LogisVert + CAMT cumulés</div>
+              </div>
+              <div className="bg-pine/95 absolute -right-2 bottom-4 z-[2] flex gap-3.5 rounded-2xl px-[16px] py-[12px] shadow-[0_16px_40px_rgba(18,61,43,0.34)] ring-1 ring-white/10 backdrop-blur-sm">
+                <div>
+                  <div className="text-lime font-serif text-[19px] leading-none">6 700 $</div>
+                  <div className="text-on-pine-soft mt-[3px] text-[11px]">LogisVert</div>
+                </div>
+                <div className="w-px bg-white/15" />
+                <div>
+                  <div className="text-lime font-serif text-[19px] leading-none">10 250 $</div>
+                  <div className="text-on-pine-soft mt-[3px] text-[11px]">CAMT</div>
+                </div>
+              </div>
+            </Reveal>
+
             <Reveal
               as="p"
               delay={160}
-              className="text-moss mt-[22px] max-w-[36em] text-[clamp(16px,1.6vw,18px)] leading-[1.6]"
+              className="text-moss mt-8 max-w-[36em] text-[clamp(16px,1.6vw,18px)] leading-[1.6] lg:mt-[22px]"
             >
               Jusqu’à <strong className="text-pine">16 950 $</strong> entre les programmes LogisVert
               (Hydro-Québec) et CAMT (Gouvernement du Canada) pour remplacer votre système de
@@ -162,7 +206,7 @@ export default function AccueilPage() {
               <strong className="text-pine">Service 100 % gratuit pour les propriétaires.</strong>
             </Reveal>
             <Reveal delay={240} className="mt-[30px]">
-              <CtaLink href="/admissibilite" size="lg" className="text-[16.5px]">
+              <CtaLink href="/admissibilite" size="lg" className="text-[16.5px] max-lg:w-full">
                 Vérifier mon admissibilité gratuitement
               </CtaLink>
             </Reveal>
@@ -178,7 +222,7 @@ export default function AccueilPage() {
             </Reveal>
           </div>
 
-          <div className="relative min-w-[280px] flex-1 basis-[360px]">
+          <div className="relative hidden w-full min-w-[280px] lg:block lg:flex-1 lg:basis-[360px]">
             <div className="relative">
               <div
                 aria-hidden
