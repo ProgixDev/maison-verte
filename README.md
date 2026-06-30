@@ -19,17 +19,17 @@ pnpm verify                           # la barrière locale complète (lint, typ
 
 ## Pages
 
-| Route                    | Contenu                                                                    |
-| ------------------------ | -------------------------------------------------------------------------- |
-| `/`                      | Accueil — hero vidéo, deux programmes, fonctionnement, témoignages, FAQ     |
-| `/admissibilite`         | Quiz d’admissibilité interactif (estimation LogisVert + CAMT, formulaire)   |
-| `/subventions`           | Vue d’ensemble des deux programmes + cumul                                 |
-| `/subventions/logisvert` | LogisVert (Hydro-Québec) — barème, conditions, documents, délais           |
-| `/subventions/camt`      | CAMT (Ressources naturelles Canada) — montants, conditions, urgence        |
-| `/fonctionnement`        | Les 5 étapes de l’accompagnement                                           |
-| `/faq`                   | Foire aux questions                                                        |
-| `/a-propos`              | Notre histoire, notre équipe, nos valeurs                                  |
-| `/confidentialite`       | Politique de confidentialité (Loi 25)                                      |
+| Route                    | Contenu                                                                   |
+| ------------------------ | ------------------------------------------------------------------------- |
+| `/`                      | Accueil — hero vidéo, deux programmes, fonctionnement, témoignages, FAQ   |
+| `/admissibilite`         | Quiz d’admissibilité interactif (estimation LogisVert + CAMT, formulaire) |
+| `/subventions`           | Vue d’ensemble des deux programmes + cumul                                |
+| `/subventions/logisvert` | LogisVert (Hydro-Québec) — barème, conditions, documents, délais          |
+| `/subventions/camt`      | CAMT (Ressources naturelles Canada) — montants, conditions, urgence       |
+| `/fonctionnement`        | Les 5 étapes de l’accompagnement                                          |
+| `/faq`                   | Foire aux questions                                                       |
+| `/a-propos`              | Notre histoire, notre équipe, nos valeurs                                 |
+| `/confidentialite`       | Politique de confidentialité (Loi 25)                                     |
 
 ## Architecture
 

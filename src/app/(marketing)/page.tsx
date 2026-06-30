@@ -18,6 +18,7 @@ import { CtaLink } from "@/components/ui/cta-link";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { FaqAccordion } from "@/components/ui/faq-accordion";
 import { FinalCta } from "@/components/ui/final-cta";
+import { Photo } from "@/components/ui/photo";
 import { Reveal } from "@/components/ui/reveal";
 
 const heroTrust = [
@@ -269,6 +270,59 @@ export default function AccueilPage() {
             className="text-forest mx-auto mt-[22px] max-w-[46ch] font-serif text-[clamp(20px,2.6vw,26px)] leading-[1.4] italic"
           >
             Notre rôle, c’est d’éviter que ça vous arrive.
+          </Reveal>
+        </div>
+      </section>
+
+      {/* SUR LE TERRAIN */}
+      <section className="px-[22px] pb-[clamp(56px,8vw,90px)]">
+        <div className="mx-auto max-w-[1080px]">
+          <div className="mx-auto mb-10 max-w-[680px] text-center">
+            <Reveal>
+              <Eyebrow>Sur le terrain</Eyebrow>
+            </Reveal>
+            <Reveal
+              as="h2"
+              delay={60}
+              className="text-pine mt-4 font-serif text-[clamp(27px,4vw,44px)] leading-[1.1] tracking-[-0.012em]"
+            >
+              La bonne thermopompe, posée par le bon installateur.
+            </Reveal>
+            <Reveal
+              as="p"
+              delay={120}
+              className="text-moss mx-auto mt-4 max-w-[58ch] text-[clamp(15px,1.6vw,17px)] leading-[1.6]"
+            >
+              C’est tout ce qui sépare une subvention versée d’une subvention refusée. Voici le type
+              d’équipement admissible que nos partenaires installent, sur des maisons comme la
+              vôtre.
+            </Reveal>
+          </div>
+          <Reveal className="grid grid-cols-2 gap-3.5 md:grid-cols-4">
+            <Photo
+              src="/thermopompe-maison-brique.jpg"
+              alt="Thermopompe installée à côté d’une maison de brique"
+              className="aspect-[4/3]"
+              sizes="(max-width: 768px) 50vw, 260px"
+            />
+            <Photo
+              src="/maison-hiver.jpg"
+              alt="Maison québécoise sous un ciel d’hiver"
+              className="aspect-[4/3]"
+              sizes="(max-width: 768px) 50vw, 260px"
+            />
+            <Photo
+              src="/thermopompe-maison-moderne.jpg"
+              alt="Thermopompe devant une maison moderne"
+              className="aspect-[4/3]"
+              sizes="(max-width: 768px) 50vw, 260px"
+            />
+            <Photo
+              src="/thermopompe-murale.jpg"
+              alt="Thermopompe murale haute efficacité"
+              className="aspect-[4/3]"
+              sizes="(max-width: 768px) 50vw, 260px"
+            />
           </Reveal>
         </div>
       </section>
