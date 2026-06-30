@@ -62,7 +62,9 @@ export function createEligibilityStore() {
             "eligibility/setPostal",
           ),
         submitPostal: () => {
-          const v = (get().answers.codepostal || "").trim().toUpperCase();
+          // Forgiving normalization: trim, uppercase, collapse internal whitespace so
+          // "g1a1a1", "G1A 1A1" and "G1A  1A1" all validate the same way.
+          const v = (get().answers.codepostal || "").trim().toUpperCase().replace(/\s+/g, " ");
           if (!v) {
             set(
               { error: "Veuillez entrer votre code postal." },
@@ -73,7 +75,7 @@ export function createEligibilityStore() {
           }
           if (!POSTAL_RE.test(v)) {
             set(
-              { error: "Entrez un code postal du Québec valide (ex. : G1A 1A1)." },
+              { error: "Entrez un code postal valide (ex. : G1A 1A1)." },
               undefined,
               "eligibility/postalError",
             );

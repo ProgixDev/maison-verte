@@ -12,7 +12,9 @@ export const QUAND_OPTIONS = [
   "Je me renseigne",
 ];
 
-export const POSTAL_RE = /^[GHJ]\d[A-Z]\s?\d[A-Z]\d$/;
+/** Any valid Canadian postal code (A1A 1A1). Collected for the advisor, not used to
+ *  score eligibility — so we accept every province, not just Québec's G/H/J prefixes. */
+export const POSTAL_RE = /^[A-Za-z]\d[A-Za-z]\s?\d[A-Za-z]\d$/;
 export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /** Builds the (branching) question list from the answers gathered so far. */
