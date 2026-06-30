@@ -16,7 +16,7 @@ export function Photo({ src, alt, className, imgClassName, sizes, priority }: Ph
   return (
     <div
       className={cn(
-        "border-pine/10 relative overflow-hidden rounded-[24px] border shadow-[0_20px_44px_rgba(18,61,43,0.12)]",
+        "group border-pine/10 relative overflow-hidden rounded-[24px] border shadow-[0_20px_44px_rgba(18,61,43,0.12)]",
         className,
       )}
     >
@@ -25,8 +25,16 @@ export function Photo({ src, alt, className, imgClassName, sizes, priority }: Ph
         alt={alt}
         fill
         sizes={sizes ?? "(max-width: 768px) 100vw, 50vw"}
-        className={cn("object-cover", imgClassName)}
+        className={cn(
+          "object-cover [filter:saturate(0.92)_contrast(1.04)_brightness(1.02)] transition-transform duration-[900ms] ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.05] motion-reduce:transition-none motion-reduce:group-hover:scale-100",
+          imgClassName,
+        )}
         priority={priority}
+      />
+      {/* Unified cinematic grade: a soft pine vignette so every image reads as one set. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_100%_at_50%_0%,transparent_52%,rgba(12,44,30,0.20))] mix-blend-multiply"
       />
     </div>
   );

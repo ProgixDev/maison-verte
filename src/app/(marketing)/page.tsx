@@ -9,6 +9,7 @@ import {
   House,
   Lock,
   PackageCheck,
+  Plus,
   Snowflake,
   TriangleAlert,
 } from "lucide-react";
@@ -18,6 +19,7 @@ import { CtaLink } from "@/components/ui/cta-link";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { FaqAccordion } from "@/components/ui/faq-accordion";
 import { FinalCta } from "@/components/ui/final-cta";
+import { HeroHeadline } from "@/components/ui/hero-headline";
 import { Photo } from "@/components/ui/photo";
 import { Reveal } from "@/components/ui/reveal";
 
@@ -137,19 +139,17 @@ export default function AccueilPage() {
                 Subventions chauffage · Québec 2026
               </Eyebrow>
             </Reveal>
-            <Reveal
-              as="h1"
-              delay={80}
-              className="text-pine mt-5 font-serif text-[clamp(31px,4.8vw,52px)] leading-[1.1] tracking-[-0.015em]"
-            >
-              On trouve votre subvention.
-              <br />
-              On vous aide à l’obtenir.
-              <br />
-              <span className="text-forest">
-                On vous met en relation avec l’entreprise qui la rend possible.
-              </span>
-            </Reveal>
+            <HeroHeadline
+              className="text-pine mt-5 font-serif text-[clamp(32px,5vw,58px)] leading-[1.04] tracking-[-0.02em]"
+              lines={[
+                { text: "On trouve votre subvention." },
+                { text: "On vous aide à l’obtenir." },
+                {
+                  text: "On vous met en relation avec l’entreprise qui la rend possible.",
+                  className: "text-forest",
+                },
+              ]}
+            />
 
             {/* Vidéo — vitrine mobile (luxe) */}
             <Reveal delay={140} className="relative mt-8 lg:hidden">
@@ -159,7 +159,7 @@ export default function AccueilPage() {
               />
               <div className="border-pine/10 bg-pine relative z-[1] aspect-[4/5] overflow-hidden rounded-[30px] border shadow-[0_30px_70px_rgba(18,61,43,0.30)] ring-1 ring-white/10">
                 <video
-                  className="size-full object-cover"
+                  className="mvq-kenburns size-full object-cover"
                   autoPlay
                   muted
                   loop
@@ -230,7 +230,7 @@ export default function AccueilPage() {
               />
               <div className="border-pine/10 bg-pine relative z-[1] aspect-[4/5] overflow-hidden rounded-[26px] border shadow-[0_30px_60px_rgba(18,61,43,0.16)]">
                 <video
-                  className="size-full object-cover"
+                  className="mvq-kenburns size-full object-cover"
                   autoPlay
                   muted
                   loop
@@ -240,6 +240,10 @@ export default function AccueilPage() {
                 >
                   <source src="/hero.mp4" type="video/mp4" />
                 </video>
+                <div
+                  aria-hidden
+                  className="absolute inset-0 bg-[radial-gradient(130%_120%_at_50%_0%,transparent_55%,rgba(12,44,30,0.42))]"
+                />
               </div>
             </div>
             <Reveal
@@ -342,39 +346,36 @@ export default function AccueilPage() {
               vôtre.
             </Reveal>
           </div>
-          <Reveal className="grid grid-cols-2 gap-3.5 md:grid-cols-4">
-            <Photo
-              src="/thermopompe-maison-brique.jpg"
-              alt="Thermopompe installée à côté d’une maison de brique"
-              className="aspect-[4/3]"
-              sizes="(max-width: 768px) 50vw, 260px"
-            />
-            <Photo
-              src="/maison-hiver.jpg"
-              alt="Maison québécoise sous un ciel d’hiver"
-              className="aspect-[4/3]"
-              sizes="(max-width: 768px) 50vw, 260px"
-            />
-            <Photo
-              src="/thermopompe-maison-moderne.jpg"
-              alt="Thermopompe devant une maison moderne"
-              className="aspect-[4/3]"
-              sizes="(max-width: 768px) 50vw, 260px"
-            />
-            <Photo
-              src="/thermopompe-murale.jpg"
-              alt="Thermopompe murale haute efficacité"
-              className="aspect-[4/3]"
-              sizes="(max-width: 768px) 50vw, 260px"
-            />
-          </Reveal>
+          <div className="grid grid-cols-2 gap-3.5 md:grid-cols-4">
+            {[
+              {
+                src: "/thermopompe-maison-brique.jpg",
+                alt: "Thermopompe installée à côté d’une maison de brique",
+              },
+              { src: "/maison-hiver.jpg", alt: "Maison québécoise sous un ciel d’hiver" },
+              {
+                src: "/thermopompe-maison-moderne.jpg",
+                alt: "Thermopompe devant une maison moderne",
+              },
+              { src: "/thermopompe-murale.jpg", alt: "Thermopompe murale haute efficacité" },
+            ].map((p, i) => (
+              <Reveal key={p.src} delay={i * 90} variant="scale">
+                <Photo
+                  src={p.src}
+                  alt={p.alt}
+                  className="aspect-[4/3]"
+                  sizes="(max-width: 768px) 50vw, 260px"
+                />
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* DEUX PROGRAMMES */}
       <section className="px-[22px] pt-[clamp(20px,3vw,32px)] pb-[clamp(56px,8vw,90px)]">
         <div className="mx-auto max-w-[1080px]">
-          <div className="mx-auto mb-10 max-w-[680px] text-center">
+          <div className="mx-auto mb-11 max-w-[680px] text-center">
             <Reveal>
               <Eyebrow>Ce que vous pouvez recevoir</Eyebrow>
             </Reveal>
@@ -385,100 +386,211 @@ export default function AccueilPage() {
             >
               Deux programmes. Cumulables. Jusqu’à 16 950 $.
             </Reveal>
+            <Reveal
+              as="p"
+              delay={110}
+              className="text-moss mx-auto mt-[18px] max-w-[52ch] text-[clamp(15px,1.6vw,17px)] leading-[1.6]"
+            >
+              Un même projet peut toucher les deux aides. Voici comment elles s’additionnent.
+            </Reveal>
           </div>
 
-          <div className="grid grid-cols-[repeat(auto-fit,minmax(290px,1fr))] gap-5">
+          <div className="grid items-stretch gap-5 lg:grid-cols-[1fr_auto_1fr]">
             {/* LogisVert */}
-            <Reveal className="border-pine/10 bg-card flex flex-col rounded-3xl border p-[30px] shadow-[0_12px_32px_rgba(18,61,43,0.06)]">
-              <div className="flex items-center justify-between gap-3">
-                <span className="bg-mint text-pine grid size-[50px] place-items-center rounded-[14px]">
-                  <Snowflake className="size-6" />
-                </span>
-                <span className="bg-leaf text-forest inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12px] font-bold">
-                  <span className="bg-forest size-[7px] rounded-full" /> Programme actif
-                </span>
-              </div>
-              <h3 className="text-pine mt-[18px] mb-0.5 font-serif text-[24px]">LogisVert</h3>
-              <div className="text-forest text-[13px] font-semibold tracking-[0.04em] uppercase">
-                Hydro-Québec
-              </div>
-              <div className="text-pine mt-3.5 mb-0.5 font-serif text-[40px] leading-none">
-                Jusqu’à 6 700 $
-              </div>
-              <p className="text-fern mt-3 mb-[18px] text-[15px] leading-[1.55]">
-                Pour l’installation d’une thermopompe efficace dans votre résidence principale.
-              </p>
-              <ul className="mb-[22px] flex flex-1 list-none flex-col gap-2.5 p-0">
-                {logisVertPoints.map((point) => (
-                  <li key={point} className="text-moss flex items-start gap-2.5 text-[14.5px]">
-                    <Check className="text-forest mt-0.5 size-[17px] shrink-0" /> {point}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/subventions/logisvert"
-                className="text-pine inline-flex items-center gap-2 text-[15px] font-bold"
-              >
-                En savoir plus <ArrowRight className="size-4" />
-              </Link>
+            <Reveal className="flex">
+              <article className="group border-pine/10 bg-card hover:border-forest/30 relative isolate flex h-full w-full flex-col overflow-hidden rounded-[26px] border p-[30px] shadow-[0_12px_32px_rgba(18,61,43,0.06)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-[0_26px_56px_rgba(18,61,43,0.14)]">
+                <span
+                  aria-hidden
+                  className="from-forest to-lime absolute inset-x-0 top-0 h-1 bg-gradient-to-r"
+                />
+                <Snowflake
+                  aria-hidden
+                  className="text-forest/[0.06] pointer-events-none absolute -right-7 -bottom-7 -z-10 size-44"
+                />
+                <div className="flex items-center justify-between gap-3">
+                  <span className="bg-mint text-pine grid size-[50px] place-items-center rounded-[14px]">
+                    <Snowflake className="size-6" />
+                  </span>
+                  <span className="bg-leaf text-forest inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12px] font-bold">
+                    <span className="bg-forest size-[7px] rounded-full" /> Programme actif
+                  </span>
+                </div>
+                <h3 className="text-pine mt-[18px] mb-0.5 font-serif text-[24px]">LogisVert</h3>
+                <div className="text-forest text-[13px] font-semibold tracking-[0.04em] uppercase">
+                  Hydro-Québec
+                </div>
+                <div className="border-pine/10 mt-5 border-t pt-5">
+                  <div className="text-stone text-[11.5px] font-bold tracking-[0.1em] uppercase">
+                    Montant maximal
+                  </div>
+                  <div className="text-pine mt-1.5 font-serif text-[clamp(38px,5vw,44px)] leading-[0.95]">
+                    Jusqu’à 6 700 $
+                  </div>
+                </div>
+                <p className="text-fern mt-3.5 mb-[18px] text-[15px] leading-[1.55]">
+                  Pour l’installation d’une thermopompe efficace dans votre résidence principale.
+                </p>
+                <ul className="mb-[22px] flex flex-1 list-none flex-col gap-2.5 p-0">
+                  {logisVertPoints.map((point) => (
+                    <li key={point} className="text-moss flex items-start gap-2.5 text-[14.5px]">
+                      <Check className="text-forest mt-0.5 size-[17px] shrink-0" /> {point}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/subventions/logisvert"
+                  className="text-pine border-pine/10 mt-auto inline-flex items-center gap-2 border-t pt-5 text-[15px] font-bold"
+                >
+                  En savoir plus
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                </Link>
+              </article>
             </Reveal>
+
+            {/* Cumul — connecteur */}
+            <div className="grid place-items-center" aria-hidden>
+              <span className="bg-pine text-lime grid size-12 place-items-center rounded-full shadow-[0_12px_26px_rgba(18,61,43,0.24)]">
+                <Plus className="size-5" strokeWidth={2.75} />
+              </span>
+            </div>
 
             {/* CAMT */}
-            <Reveal
-              delay={100}
-              className="border-brick/20 bg-card flex flex-col rounded-3xl border p-[30px] shadow-[0_12px_32px_rgba(18,61,43,0.06)]"
-            >
-              <div className="flex items-center justify-between gap-3">
-                <span className="bg-blush text-brick grid size-[50px] place-items-center rounded-[14px]">
-                  <Flame className="size-6" />
-                </span>
-                <span className="bg-blush text-brick inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12px] font-bold">
-                  <span className="bg-brick size-[7px] rounded-full" /> Ferme le 31 juillet 2026
-                </span>
-              </div>
-              <h3 className="text-pine mt-[18px] mb-0.5 font-serif text-[24px]">CAMT</h3>
-              <div className="text-brick text-[13px] font-semibold tracking-[0.04em] uppercase">
-                Gouvernement du Canada
-              </div>
-              <div className="text-pine mt-3.5 mb-0.5 font-serif text-[40px] leading-none">
-                Jusqu’à 10 250 $
-              </div>
-              <p className="text-fern mt-3 mb-[18px] text-[15px] leading-[1.55]">
-                Pour remplacer votre système de chauffage au mazout par une thermopompe.
-              </p>
-              <ul className="mb-[22px] flex flex-1 list-none flex-col gap-2.5 p-0">
-                <li className="text-moss flex items-start gap-2.5 text-[14.5px]">
-                  <Check className="text-brick mt-0.5 size-[17px] shrink-0" />{" "}
-                  <strong className="text-pine">Argent versé AVANT les travaux</strong>
-                </li>
-                <li className="text-moss flex items-start gap-2.5 text-[14.5px]">
-                  <Check className="text-brick mt-0.5 size-[17px] shrink-0" /> Subvention non
-                  imposable
-                </li>
-                <li className="text-moss flex items-start gap-2.5 text-[14.5px]">
-                  <Check className="text-brick mt-0.5 size-[17px] shrink-0" /> Admissibilité selon
-                  le revenu du ménage
-                </li>
-                <li className="text-moss flex items-start gap-2.5 text-[14.5px]">
-                  <Check className="text-brick mt-0.5 size-[17px] shrink-0" /> Dernier jour : 31
-                  juillet 2026
-                </li>
-              </ul>
-              <Link
-                href="/subventions/camt"
-                className="text-pine inline-flex items-center gap-2 text-[15px] font-bold"
-              >
-                En savoir plus <ArrowRight className="size-4" />
-              </Link>
+            <Reveal delay={120} className="flex">
+              <article className="group border-brick/25 bg-card hover:border-brick/45 relative isolate flex h-full w-full flex-col overflow-hidden rounded-[26px] border p-[30px] shadow-[0_12px_32px_rgba(18,61,43,0.06)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-[0_26px_56px_rgba(190,58,43,0.16)]">
+                <span
+                  aria-hidden
+                  className="from-brick to-gold absolute inset-x-0 top-0 h-1 bg-gradient-to-r"
+                />
+                <Flame
+                  aria-hidden
+                  className="text-brick/[0.06] pointer-events-none absolute -right-7 -bottom-7 -z-10 size-44"
+                />
+                <div className="flex items-center justify-between gap-3">
+                  <span className="bg-blush text-brick grid size-[50px] place-items-center rounded-[14px]">
+                    <Flame className="size-6" />
+                  </span>
+                  <span className="bg-blush text-brick inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12px] font-bold">
+                    <span className="bg-brick mvq-pulse size-[7px] rounded-full" /> Ferme le 31
+                    juillet 2026
+                  </span>
+                </div>
+                <h3 className="text-pine mt-[18px] mb-0.5 font-serif text-[24px]">CAMT</h3>
+                <div className="text-brick text-[13px] font-semibold tracking-[0.04em] uppercase">
+                  Gouvernement du Canada
+                </div>
+                <div className="border-pine/10 mt-5 border-t pt-5">
+                  <div className="text-stone text-[11.5px] font-bold tracking-[0.1em] uppercase">
+                    Montant maximal
+                  </div>
+                  <div className="text-pine mt-1.5 font-serif text-[clamp(38px,5vw,44px)] leading-[0.95]">
+                    Jusqu’à 10 250 $
+                  </div>
+                </div>
+                <p className="text-fern mt-3.5 mb-[18px] text-[15px] leading-[1.55]">
+                  Pour remplacer votre système de chauffage au mazout par une thermopompe.
+                </p>
+                <ul className="mb-[22px] flex flex-1 list-none flex-col gap-2.5 p-0">
+                  <li className="text-moss flex items-start gap-2.5 text-[14.5px]">
+                    <Check className="text-brick mt-0.5 size-[17px] shrink-0" />{" "}
+                    <strong className="text-pine">Argent versé AVANT les travaux</strong>
+                  </li>
+                  <li className="text-moss flex items-start gap-2.5 text-[14.5px]">
+                    <Check className="text-brick mt-0.5 size-[17px] shrink-0" /> Subvention non
+                    imposable
+                  </li>
+                  <li className="text-moss flex items-start gap-2.5 text-[14.5px]">
+                    <Check className="text-brick mt-0.5 size-[17px] shrink-0" /> Admissibilité selon
+                    le revenu du ménage
+                  </li>
+                  <li className="text-moss flex items-start gap-2.5 text-[14.5px]">
+                    <Check className="text-brick mt-0.5 size-[17px] shrink-0" /> Dernier jour : 31
+                    juillet 2026
+                  </li>
+                </ul>
+                <Link
+                  href="/subventions/camt"
+                  className="text-pine border-pine/10 mt-auto inline-flex items-center gap-2 border-t pt-5 text-[15px] font-bold"
+                >
+                  En savoir plus
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                </Link>
+              </article>
             </Reveal>
           </div>
+
+          {/* Cumul — le total */}
           <Reveal
-            as="p"
-            className="text-moss mx-auto mt-7 max-w-[60ch] text-center text-[clamp(15px,1.6vw,17px)]"
+            delay={80}
+            className="bg-pine-deeper text-cream-soft relative mt-5 overflow-hidden rounded-[28px] shadow-[0_30px_70px_rgba(12,44,30,0.28)] ring-1 ring-white/10"
           >
-            Combinés, ces deux programmes peuvent couvrir{" "}
-            <strong className="text-pine">jusqu’à 16 950 $</strong> de votre projet pour un
-            propriétaire admissible.
+            <div
+              aria-hidden
+              className="bg-lime/15 absolute -top-24 -right-16 size-72 rounded-full blur-3xl"
+            />
+            <div
+              aria-hidden
+              className="bg-forest/25 absolute -bottom-28 -left-20 size-80 rounded-full blur-3xl"
+            />
+            <div className="relative grid gap-x-12 gap-y-7 p-[clamp(26px,4vw,44px)] lg:grid-cols-[1fr_auto] lg:items-center">
+              <div>
+                <div className="text-on-pine-soft text-[12px] font-bold tracking-[0.14em] uppercase">
+                  Les deux programmes, cumulés
+                </div>
+                <div className="mt-4 flex flex-wrap items-baseline gap-x-3.5 gap-y-1.5 tabular-nums">
+                  <Reveal
+                    as="span"
+                    variant="scale"
+                    className="text-cream-soft font-serif text-[clamp(22px,3vw,28px)]"
+                  >
+                    6 700 $
+                  </Reveal>
+                  <Reveal
+                    as="span"
+                    delay={140}
+                    variant="fade"
+                    className="text-on-pine-soft text-[20px] font-light"
+                  >
+                    +
+                  </Reveal>
+                  <Reveal
+                    as="span"
+                    delay={220}
+                    variant="scale"
+                    className="text-cream-soft font-serif text-[clamp(22px,3vw,28px)]"
+                  >
+                    10 250 $
+                  </Reveal>
+                  <Reveal
+                    as="span"
+                    delay={360}
+                    variant="fade"
+                    className="text-on-pine-soft text-[20px] font-light"
+                  >
+                    =
+                  </Reveal>
+                  <Reveal
+                    as="span"
+                    delay={460}
+                    variant="scale"
+                    className="text-lime font-serif text-[clamp(40px,6vw,58px)] leading-[0.95]"
+                  >
+                    jusqu’à <CountUp to={16950} suffix=" $" />
+                  </Reveal>
+                </div>
+                <p className="text-on-pine mt-4 max-w-[48ch] text-[15px] leading-[1.6]">
+                  Ce montant peut couvrir une large part de votre projet — et une partie est versée
+                  avant même le début des travaux, pour un propriétaire admissible.
+                </p>
+              </div>
+              <div className="flex flex-col items-start gap-3 lg:items-end">
+                <CtaLink href="/admissibilite" size="lg" className="max-sm:w-full">
+                  Estimer mon montant
+                </CtaLink>
+                <span className="text-on-pine-soft text-[12.5px]">
+                  Estimation en 2 minutes, sans engagement.
+                </span>
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>

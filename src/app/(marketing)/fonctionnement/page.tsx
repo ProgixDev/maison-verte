@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { FinalCta } from "@/components/ui/final-cta";
+import { Parallax } from "@/components/ui/parallax";
 import { Photo } from "@/components/ui/photo";
 import { Reveal } from "@/components/ui/reveal";
 
@@ -32,10 +33,13 @@ export default function FonctionnementPage() {
     <main>
       {/* HERO */}
       <section className="relative overflow-hidden px-[22px] pt-[clamp(44px,7vw,82px)] pb-[clamp(28px,4vw,44px)]">
-        <div
+        <Parallax
           aria-hidden
-          className="pointer-events-none absolute -top-[120px] -left-[90px] size-[420px] max-w-[80vw] rounded-full bg-[radial-gradient(circle,rgba(199,240,60,0.26),transparent_68%)]"
-        />
+          distance={60}
+          className="pointer-events-none absolute -top-[120px] -left-[90px] size-[420px] max-w-[80vw]"
+        >
+          <div className="size-full rounded-full bg-[radial-gradient(circle,rgba(199,240,60,0.26),transparent_68%)]" />
+        </Parallax>
         <div className="relative mx-auto max-w-[840px] text-center">
           <Reveal>
             <Eyebrow className="bg-forest/10" icon={<Route className="size-[15px]" />}>
@@ -89,7 +93,7 @@ export default function FonctionnementPage() {
           />
 
           {/* Étape 1 */}
-          <Reveal className="relative z-[1] mb-5 flex items-start gap-[22px]">
+          <Reveal delay={0} className="relative z-[1] mb-5 flex items-start gap-[22px]">
             <span className="bg-pine text-lime grid size-[72px] shrink-0 place-items-center rounded-full font-serif text-[28px] shadow-[0_0_0_8px_var(--cream)]">
               1
             </span>
@@ -113,7 +117,7 @@ export default function FonctionnementPage() {
           </Reveal>
 
           {/* Étape 2 */}
-          <Reveal delay={80} className="relative z-[1] mb-5 flex items-start gap-[22px]">
+          <Reveal delay={90} className="relative z-[1] mb-5 flex items-start gap-[22px]">
             <span className="bg-pine text-lime grid size-[72px] shrink-0 place-items-center rounded-full font-serif text-[28px] shadow-[0_0_0_8px_var(--cream)]">
               2
             </span>
@@ -135,7 +139,7 @@ export default function FonctionnementPage() {
           </Reveal>
 
           {/* Étape 3 */}
-          <Reveal delay={160} className="relative z-[1] mb-5 flex items-start gap-[22px]">
+          <Reveal delay={180} className="relative z-[1] mb-5 flex items-start gap-[22px]">
             <span className="bg-pine text-lime grid size-[72px] shrink-0 place-items-center rounded-full font-serif text-[28px] shadow-[0_0_0_8px_var(--cream)]">
               3
             </span>
@@ -164,7 +168,7 @@ export default function FonctionnementPage() {
           </Reveal>
 
           {/* Étape 4 */}
-          <Reveal delay={240} className="relative z-[1] mb-5 flex items-start gap-[22px]">
+          <Reveal delay={270} className="relative z-[1] mb-5 flex items-start gap-[22px]">
             <span className="bg-pine text-lime grid size-[72px] shrink-0 place-items-center rounded-full font-serif text-[28px] shadow-[0_0_0_8px_var(--cream)]">
               4
             </span>
@@ -183,7 +187,7 @@ export default function FonctionnementPage() {
           </Reveal>
 
           {/* Étape 5 */}
-          <Reveal delay={320} className="relative z-[1] flex items-start gap-[22px]">
+          <Reveal delay={360} className="relative z-[1] flex items-start gap-[22px]">
             <span className="bg-lime text-pine grid size-[72px] shrink-0 place-items-center rounded-full font-serif text-[28px] shadow-[0_0_0_8px_var(--cream)]">
               5
             </span>

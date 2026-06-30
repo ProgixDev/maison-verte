@@ -4,6 +4,7 @@ import { ArrowRight, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { m, useScroll, useSpring } from "@/components/motion";
 import { CtaLink } from "@/components/ui/cta-link";
 import { cn } from "@/lib/utils";
 import { isActive, mainNav } from "@/lib/site-nav";
@@ -18,6 +19,10 @@ export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  // Reading-progress fill along the header's bottom edge.
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 6);
@@ -112,6 +117,12 @@ export function SiteHeader() {
             </button>
           </div>
         </div>
+
+        <m.div
+          aria-hidden
+          style={{ scaleX: progress }}
+          className="bg-lime absolute inset-x-0 bottom-0 z-[1] h-[2px] origin-left"
+        />
 
         {open ? (
           <nav

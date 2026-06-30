@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Serif_Display, Geist_Mono, Hanken_Grotesk } from "next/font/google";
+import { LenisProvider } from "@/components/lenis-provider";
 import { MotionProvider } from "@/components/motion";
 import { site } from "@/core/site";
 import "./globals.css";
@@ -78,7 +79,9 @@ export default function RootLayout({
           // JSON-LD is static, app-controlled data — safe to inline.
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <MotionProvider>{children}</MotionProvider>
+        <MotionProvider>
+          <LenisProvider>{children}</LenisProvider>
+        </MotionProvider>
       </body>
     </html>
   );

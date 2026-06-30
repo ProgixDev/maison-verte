@@ -16,6 +16,7 @@ import {
 import Link from "next/link";
 import { CtaLink } from "@/components/ui/cta-link";
 import { FinalCta } from "@/components/ui/final-cta";
+import { Parallax } from "@/components/ui/parallax";
 import { Photo } from "@/components/ui/photo";
 import { Reveal } from "@/components/ui/reveal";
 
@@ -71,10 +72,13 @@ export default function LogisVertPage() {
     <main>
       {/* HERO */}
       <section className="relative overflow-hidden px-[22px] pt-[clamp(44px,7vw,82px)] pb-[clamp(32px,5vw,52px)]">
-        <div
+        <Parallax
           aria-hidden
-          className="pointer-events-none absolute -top-[120px] -right-[90px] size-[420px] max-w-[80vw] rounded-full bg-[radial-gradient(circle,rgba(199,240,60,0.28),transparent_68%)]"
-        />
+          distance={60}
+          className="pointer-events-none absolute -top-[120px] -right-[90px] size-[420px] max-w-[80vw]"
+        >
+          <div className="size-full rounded-full bg-[radial-gradient(circle,rgba(199,240,60,0.28),transparent_68%)]" />
+        </Parallax>
         <div className="relative mx-auto max-w-[900px]">
           <Reveal>
             <Link
@@ -144,39 +148,52 @@ export default function LogisVertPage() {
         </Reveal>
 
         {/* BARÈME */}
-        <Reveal as="section" className="border-pine/10 border-t py-[clamp(28px,4vw,44px)]">
-          <h2 className="text-pine m-0 font-serif text-[clamp(24px,3.4vw,34px)] leading-[1.14]">
+        <section className="border-pine/10 border-t py-[clamp(28px,4vw,44px)]">
+          <Reveal
+            as="h2"
+            className="text-pine m-0 font-serif text-[clamp(24px,3.4vw,34px)] leading-[1.14]"
+          >
             Combien vous pouvez recevoir
-          </h2>
-          <p className="text-moss mt-3.5 mb-[22px] text-[16.5px] leading-[1.6]">
+          </Reveal>
+          <Reveal
+            as="p"
+            delay={60}
+            className="text-moss mt-3.5 mb-[22px] text-[16.5px] leading-[1.6]"
+          >
             Le calcul est simple : ça dépend de la puissance de votre thermopompe.
-          </p>
+          </Reveal>
           <div className="flex flex-col gap-3">
-            <div className="border-pine/[0.08] bg-card flex items-start gap-[13px] rounded-[14px] border p-[18px]">
+            <Reveal className="border-pine/[0.08] bg-card flex items-start gap-[13px] rounded-[14px] border p-[18px]">
               <span className="text-forest shrink-0 font-serif text-[20px]">50 $</span>
               <span className="text-moss text-[15px]">
                 par 1 000 BTU/h pour une thermopompe efficace certifiée{" "}
                 <strong className="text-pine">ENERGY STAR®</strong>
               </span>
-            </div>
-            <div className="border-pine/[0.08] bg-card flex items-start gap-[13px] rounded-[14px] border p-[18px]">
+            </Reveal>
+            <Reveal
+              delay={80}
+              className="border-pine/[0.08] bg-card flex items-start gap-[13px] rounded-[14px] border p-[18px]"
+            >
               <span className="text-forest shrink-0 font-serif text-[20px]">120 $</span>
               <span className="text-moss text-[15px]">
                 par 1 000 BTU/h pour une thermopompe{" "}
                 <strong className="text-pine">très haute efficacité</strong> (climat froid, liste
                 NEEP)
               </span>
-            </div>
-            <div className="border-pine/[0.08] bg-card flex items-start gap-[13px] rounded-[14px] border p-[18px]">
+            </Reveal>
+            <Reveal
+              delay={160}
+              className="border-pine/[0.08] bg-card flex items-start gap-[13px] rounded-[14px] border p-[18px]"
+            >
               <span className="text-forest shrink-0 font-serif text-[20px]">750 $</span>
               <span className="text-moss text-[15px]">
                 par 1 000 BTU/h pour une{" "}
                 <strong className="text-pine">thermopompe géothermique</strong> (plafond 18 000 $
                 par adresse)
               </span>
-            </div>
+            </Reveal>
           </div>
-          <div className="border-pine/10 mt-[22px] overflow-x-auto rounded-2xl border">
+          <Reveal className="border-pine/10 mt-[22px] overflow-x-auto rounded-2xl border">
             <table className="w-full min-w-[460px] border-collapse text-[14.5px]">
               <thead>
                 <tr className="bg-sage">
@@ -214,21 +231,28 @@ export default function LogisVertPage() {
                 </tr>
               </tbody>
             </table>
-          </div>
-          <p className="text-stone mt-4 text-[14.5px]">
+          </Reveal>
+          <Reveal as="p" className="text-stone mt-4 text-[14.5px]">
             Le montant exact dépend du modèle précis choisi. Notre équipe vous donne le chiffre
             exact dès l’analyse d’admissibilité.
-          </p>
-        </Reveal>
+          </Reveal>
+        </section>
 
         {/* CONDITIONS */}
-        <Reveal as="section" className="border-pine/10 border-t py-[clamp(28px,4vw,44px)]">
-          <h2 className="text-pine mt-0 mb-[22px] font-serif text-[clamp(24px,3.4vw,34px)] leading-[1.14]">
+        <section className="border-pine/10 border-t py-[clamp(28px,4vw,44px)]">
+          <Reveal
+            as="h2"
+            className="text-pine mt-0 mb-[22px] font-serif text-[clamp(24px,3.4vw,34px)] leading-[1.14]"
+          >
             Conditions d’admissibilité
-          </h2>
+          </Reveal>
           <div className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-4">
-            {conditionGroups.map(({ icon: Icon, title, items }) => (
-              <div key={title} className="border-pine/[0.08] bg-card rounded-[18px] border p-6">
+            {conditionGroups.map(({ icon: Icon, title, items }, i) => (
+              <Reveal
+                key={title}
+                delay={i * 80}
+                className="border-pine/[0.08] bg-card rounded-[18px] border p-6"
+              >
                 <h3 className="text-pine mt-0 mb-3.5 flex items-center gap-[9px] text-[16px]">
                   <Icon className="text-forest size-[19px]" /> {title}
                 </h3>
@@ -239,16 +263,16 @@ export default function LogisVertPage() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </Reveal>
             ))}
           </div>
-          <div className="bg-sage mt-4 flex items-start gap-[11px] rounded-[13px] px-[18px] py-[15px]">
+          <Reveal className="bg-sage mt-4 flex items-start gap-[11px] rounded-[13px] px-[18px] py-[15px]">
             <Info className="text-forest mt-px size-[18px] shrink-0" />
             <span className="text-moss text-[14.5px]">
               Une seule demande LogisVert par adresse, peu importe le nombre d’unités installées.
             </span>
-          </div>
-        </Reveal>
+          </Reveal>
+        </section>
 
         {/* DOCUMENTS */}
         <Reveal as="section" className="border-pine/10 border-t py-[clamp(28px,4vw,44px)]">
@@ -312,30 +336,31 @@ export default function LogisVertPage() {
         </Reveal>
 
         {/* PIÈGES */}
-        <Reveal
-          as="section"
-          className="border-pine/10 border-t pt-[clamp(28px,4vw,44px)] pb-[clamp(40px,6vw,60px)]"
-        >
-          <h2 className="text-pine mt-0 mb-2 font-serif text-[clamp(24px,3.4vw,34px)] leading-[1.14]">
+        <section className="border-pine/10 border-t pt-[clamp(28px,4vw,44px)] pb-[clamp(40px,6vw,60px)]">
+          <Reveal
+            as="h2"
+            className="text-pine mt-0 mb-2 font-serif text-[clamp(24px,3.4vw,34px)] leading-[1.14]"
+          >
             Les 5 erreurs qui font perdre la subvention
-          </h2>
+          </Reveal>
           <div className="mt-[18px] flex flex-col gap-[11px]">
             {mistakes.map((mistake, i) => (
-              <div
+              <Reveal
                 key={mistake}
+                delay={i * 80}
                 className="border-brick/15 bg-card flex items-start gap-3.5 rounded-[14px] border px-[19px] py-[17px]"
               >
                 <span className="text-brick shrink-0 font-serif text-[22px] leading-none">
                   {i + 1}
                 </span>
                 <span className="text-moss text-[15.5px]">{mistake}</span>
-              </div>
+              </Reveal>
             ))}
           </div>
-          <p className="text-brick mt-4 text-[15px] font-semibold">
+          <Reveal as="p" className="text-brick mt-4 text-[15px] font-semibold">
             Chacune de ces erreurs annule la subvention de façon définitive.
-          </p>
-        </Reveal>
+          </Reveal>
+        </section>
       </div>
 
       {/* CTA FINAL */}

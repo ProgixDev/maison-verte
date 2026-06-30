@@ -128,6 +128,19 @@
     font-size: 17px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Couture text rendering: real kerning + standard/contextual ligatures. */
+    font-feature-settings:
+      "kern" 1,
+      "liga" 1,
+      "calt" 1;
+    text-rendering: optimizeLegibility;
+  }
+  /* Display serif: lining + tabular figures so money lines up and reads premium. */
+  .font-serif {
+    font-feature-settings:
+      "kern" 1,
+      "lnum" 1;
   }
   ::selection {
     background: var(--lime);
@@ -187,4 +200,36 @@
   .mvq-pop {
     animation: mvq-pop 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   }
+  /* Slow cinematic push-in for hero video (Ken Burns). */
+  @keyframes mvq-kenburns {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.12);
+    }
+  }
+  .mvq-kenburns {
+    animation: mvq-kenburns 26s ease-in-out infinite alternate;
+    transform-origin: 60% 40%;
+  }
+}
+
+/* Lenis momentum scroll — classes are only added on the client when smooth scroll
+ * is active (the provider stays off for prefers-reduced-motion). */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }

@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { CtaLink } from "@/components/ui/cta-link";
+import { Parallax } from "@/components/ui/parallax";
 import { Photo } from "@/components/ui/photo";
 import { Reveal } from "@/components/ui/reveal";
 
@@ -72,10 +73,13 @@ export default function Page() {
     <main>
       {/* HERO */}
       <section className="relative overflow-hidden px-[22px] pt-[clamp(40px,6vw,72px)] pb-[clamp(20px,3vw,32px)]">
-        <div
+        <Parallax
           aria-hidden
-          className="pointer-events-none absolute -top-[120px] -right-[90px] size-[420px] max-w-[80vw] rounded-full bg-[radial-gradient(circle,rgba(190,58,43,0.18),transparent_68%)]"
-        />
+          distance={60}
+          className="pointer-events-none absolute -top-[120px] -right-[90px] size-[420px] max-w-[80vw]"
+        >
+          <div className="size-full rounded-full bg-[radial-gradient(circle,rgba(190,58,43,0.18),transparent_68%)]" />
+        </Parallax>
         <div className="relative mx-auto max-w-[900px]">
           <Reveal>
             <Link
@@ -275,42 +279,50 @@ export default function Page() {
         </Reveal>
 
         {/* Section 5 — Dépenses couvertes */}
-        <Reveal as="section" className="border-pine/10 border-t py-[clamp(28px,4vw,44px)]">
-          <h2 className="text-pine mt-0 mb-[18px] font-serif text-[clamp(24px,3.4vw,34px)] leading-[1.14]">
+        <section className="border-pine/10 border-t py-[clamp(28px,4vw,44px)]">
+          <Reveal
+            as="h2"
+            className="text-pine mt-0 mb-[18px] font-serif text-[clamp(24px,3.4vw,34px)] leading-[1.14]"
+          >
             Ce que le CAMT finance
-          </h2>
+          </Reveal>
           <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-3">
-            {financed.map(({ icon: Icon, label }) => (
-              <div
+            {financed.map(({ icon: Icon, label }, i) => (
+              <Reveal
                 key={label}
+                delay={i * 80}
                 className="border-pine/[0.08] bg-card flex items-center gap-2.5 rounded-[14px] border px-[18px] py-4"
               >
                 <Icon className="text-forest size-[19px] shrink-0" />
                 <span className="text-moss text-[15px]">{label}</span>
-              </div>
+              </Reveal>
             ))}
           </div>
-        </Reveal>
+        </section>
 
         {/* Section 6 — Processus */}
-        <Reveal as="section" className="border-pine/10 border-t py-[clamp(28px,4vw,44px)]">
-          <h2 className="text-pine mt-0 mb-5 font-serif text-[clamp(24px,3.4vw,34px)] leading-[1.14]">
+        <section className="border-pine/10 border-t py-[clamp(28px,4vw,44px)]">
+          <Reveal
+            as="h2"
+            className="text-pine mt-0 mb-5 font-serif text-[clamp(24px,3.4vw,34px)] leading-[1.14]"
+          >
             Comment ça se passe concrètement
-          </h2>
+          </Reveal>
           <div className="flex flex-col gap-2.5">
             {steps.map((step, i) => (
-              <div
+              <Reveal
                 key={step}
+                delay={i * 80}
                 className="border-pine/[0.08] bg-card flex items-start gap-3.5 rounded-[14px] border px-[19px] py-4"
               >
                 <span className="bg-pine text-lime grid size-[30px] shrink-0 place-items-center rounded-full text-[14px] font-bold">
                   {i + 1}
                 </span>
                 <span className="text-moss text-[15.5px]">{step}</span>
-              </div>
+              </Reveal>
             ))}
           </div>
-        </Reveal>
+        </section>
 
         {/* Section 7 — Urgence */}
         <Reveal
@@ -325,10 +337,15 @@ export default function Page() {
               Le 31 juillet 2026 est le dernier jour pour vous inscrire au CAMT. Après cette date :
             </p>
             <ul className="mt-4 flex list-none flex-col gap-2.5 p-0">
-              {urgencyPoints.map((point) => (
-                <li key={point} className="flex gap-[9px] text-[15.5px] text-[#ffe3dd]">
+              {urgencyPoints.map((point, i) => (
+                <Reveal
+                  as="li"
+                  key={point}
+                  delay={i * 80}
+                  className="flex gap-[9px] text-[15.5px] text-[#ffe3dd]"
+                >
                   <X className="mt-0.5 size-[18px] shrink-0" /> {point}
-                </li>
+                </Reveal>
               ))}
             </ul>
             <p className="mt-[18px] text-[16.5px] leading-[1.6] font-semibold text-white">
