@@ -3,6 +3,7 @@ import { MessagesSquare } from "lucide-react";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { FaqAccordion } from "@/components/ui/faq-accordion";
 import { FinalCta } from "@/components/ui/final-cta";
+import { Parallax } from "@/components/ui/parallax";
 import { Reveal } from "@/components/ui/reveal";
 
 export const metadata: Metadata = {
@@ -112,10 +113,13 @@ export default function FaqPage() {
     <main>
       {/* EN-TÊTE */}
       <section className="relative overflow-hidden px-[22px] pt-[clamp(44px,7vw,82px)] pb-[clamp(28px,4vw,40px)]">
-        <div
+        <Parallax
           aria-hidden
-          className="pointer-events-none absolute -top-[120px] -left-[90px] size-[420px] max-w-[80vw] rounded-full bg-[radial-gradient(circle,rgba(199,240,60,0.26),transparent_68%)]"
-        />
+          distance={60}
+          className="pointer-events-none absolute -top-[120px] -left-[90px] size-[420px] max-w-[80vw]"
+        >
+          <div className="size-full rounded-full bg-[radial-gradient(circle,rgba(199,240,60,0.26),transparent_68%)]" />
+        </Parallax>
         <div className="relative mx-auto max-w-[820px] text-center">
           <Reveal>
             <Eyebrow icon={<MessagesSquare className="size-[15px]" />}>Foire aux questions</Eyebrow>

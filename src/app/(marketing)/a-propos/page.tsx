@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { CtaLink } from "@/components/ui/cta-link";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { Parallax } from "@/components/ui/parallax";
 import { Photo } from "@/components/ui/photo";
 import { Reveal } from "@/components/ui/reveal";
 
@@ -75,10 +76,13 @@ export default function AProposPage() {
     <main>
       {/* HERO */}
       <section className="relative overflow-hidden px-[22px] pt-[clamp(44px,7vw,82px)] pb-[clamp(28px,4vw,44px)]">
-        <div
+        <Parallax
           aria-hidden
-          className="pointer-events-none absolute -top-[120px] -right-[90px] size-[420px] max-w-[80vw] rounded-full bg-[radial-gradient(circle,rgba(199,240,60,0.26),transparent_68%)]"
-        />
+          distance={70}
+          className="pointer-events-none absolute -top-[120px] -right-[90px] size-[420px] max-w-[80vw]"
+        >
+          <div className="size-full rounded-full bg-[radial-gradient(circle,rgba(199,240,60,0.26),transparent_68%)]" />
+        </Parallax>
         <div className="relative mx-auto max-w-[840px] text-center">
           <Reveal>
             <Eyebrow icon={<Sprout className="size-[15px]" />}>À propos</Eyebrow>
@@ -132,14 +136,19 @@ export default function AProposPage() {
         </Reveal>
 
         {/* Trois services en un */}
-        <Reveal as="section" className="border-pine/10 border-t py-[clamp(28px,4vw,44px)]">
-          <h2 className="text-pine mt-0 mb-[22px] font-serif text-[clamp(24px,3.4vw,34px)] leading-[1.14]">
+        <section className="border-pine/10 border-t py-[clamp(28px,4vw,44px)]">
+          <Reveal
+            as="h2"
+            className="text-pine mt-0 mb-[22px] font-serif text-[clamp(24px,3.4vw,34px)] leading-[1.14]"
+          >
             Maison Verte Québec, c’est trois services en un
-          </h2>
+          </Reveal>
           <div className="flex flex-col gap-3.5">
-            {services.map(({ icon: Icon, badge, title, body }) => (
-              <div
+            {services.map(({ icon: Icon, badge, title, body }, i) => (
+              <Reveal
                 key={title}
+                delay={i * 90}
+                variant="left"
                 className="border-pine/[0.08] bg-card flex items-start gap-4 rounded-[18px] border p-[22px]"
               >
                 <span
@@ -151,14 +160,14 @@ export default function AProposPage() {
                   <h3 className="text-pine mt-0 mb-[5px] text-[18px]">{title}</h3>
                   <p className="text-fern m-0 text-[15px] leading-[1.6]">{body}</p>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
-          <p className="text-moss mt-[18px] text-[16px] leading-[1.65]">
+          <Reveal as="p" className="text-moss mt-[18px] text-[16px] leading-[1.65]">
             Pas de vente directe. Pas de pression. Pas de devis non sollicités. Juste un service qui
             simplifie un parcours que les gouvernements ont laissé complexe.
-          </p>
-        </Reveal>
+          </Reveal>
+        </section>
 
         {/* Modèle économique */}
         <Reveal as="section" className="border-pine/10 border-t py-[clamp(28px,4vw,44px)]">
@@ -189,56 +198,76 @@ export default function AProposPage() {
         </Reveal>
 
         {/* Notre équipe */}
-        <Reveal as="section" className="border-pine/10 border-t py-[clamp(28px,4vw,44px)]">
-          <Eyebrow>Notre équipe</Eyebrow>
-          <p className="text-moss mt-4 mb-5 max-w-[60ch] text-[16px] leading-[1.65]">
+        <section className="border-pine/10 border-t py-[clamp(28px,4vw,44px)]">
+          <Reveal>
+            <Eyebrow>Notre équipe</Eyebrow>
+          </Reveal>
+          <Reveal
+            as="p"
+            delay={60}
+            className="text-moss mt-4 mb-5 max-w-[60ch] text-[16px] leading-[1.65]"
+          >
             Une équipe d’ici, qui connaît les programmes sur le bout des doigts et qui se bat pour
             que chaque dossier passe du premier coup.
-          </p>
+          </Reveal>
           <div className="grid grid-cols-2 gap-3.5 sm:grid-cols-3">
-            <Photo
-              src="/advisor-chat.jpg"
-              alt="Deux membres de l’équipe en discussion"
-              className="aspect-[4/5]"
-              sizes="(max-width: 640px) 50vw, 270px"
-            />
-            <Photo
-              src="/portrait-woman.jpg"
-              alt="Conseillère Maison Verte Québec"
-              className="aspect-[4/5]"
-              sizes="(max-width: 640px) 50vw, 270px"
-            />
-            <Photo
-              src="/lounge.jpg"
-              alt="L’équipe à nos bureaux"
-              className="col-span-2 aspect-[4/5] sm:col-span-1"
-              sizes="(max-width: 640px) 100vw, 270px"
-            />
-          </div>
-        </Reveal>
-
-        {/* Nos valeurs */}
-        <Reveal
-          as="section"
-          className="border-pine/10 border-t pt-[clamp(28px,4vw,44px)] pb-[clamp(40px,6vw,60px)]"
-        >
-          <h2 className="text-pine mt-0 mb-[22px] font-serif text-[clamp(24px,3.4vw,34px)] leading-[1.14]">
-            Nos valeurs
-          </h2>
-          <div className="grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-4">
-            {valeurs.map(({ icon: Icon, badge, title, body }) => (
-              <div key={title} className="border-pine/[0.08] bg-card rounded-[20px] border p-6">
-                <span
-                  className={`mb-3.5 grid size-[46px] place-items-center rounded-[13px] ${badge} text-pine`}
-                >
-                  <Icon className="size-[22px]" />
-                </span>
-                <h3 className="text-pine mt-0 mb-1.5 text-[18px]">{title}</h3>
-                <p className="text-fern m-0 text-[14.5px] leading-[1.55]">{body}</p>
-              </div>
+            {[
+              {
+                src: "/advisor-chat.jpg",
+                alt: "Deux membres de l’équipe en discussion",
+                cls: "",
+                sizes: "(max-width: 640px) 50vw, 270px",
+              },
+              {
+                src: "/portrait-woman.jpg",
+                alt: "Conseillère Maison Verte Québec",
+                cls: "",
+                sizes: "(max-width: 640px) 50vw, 270px",
+              },
+              {
+                src: "/lounge.jpg",
+                alt: "L’équipe à nos bureaux",
+                cls: "col-span-2 sm:col-span-1",
+                sizes: "(max-width: 640px) 100vw, 270px",
+              },
+            ].map((p, i) => (
+              <Reveal key={p.src} delay={i * 90} variant="scale" className={p.cls || undefined}>
+                <Photo src={p.src} alt={p.alt} className="aspect-[4/5]" sizes={p.sizes} />
+              </Reveal>
             ))}
           </div>
-        </Reveal>
+        </section>
+
+        {/* Nos valeurs */}
+        <section className="border-pine/10 border-t pt-[clamp(28px,4vw,44px)] pb-[clamp(40px,6vw,60px)]">
+          <Reveal
+            as="h2"
+            className="text-pine mt-0 mb-[22px] font-serif text-[clamp(24px,3.4vw,34px)] leading-[1.14]"
+          >
+            Nos valeurs
+          </Reveal>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {valeurs.map(({ icon: Icon, badge, title, body }, i) => (
+              <Reveal key={title} delay={i * 80} variant="scale">
+                <div className="group border-pine/[0.08] bg-card hover:border-pine/15 relative isolate flex h-full flex-col overflow-hidden rounded-[20px] border p-[26px] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(18,61,43,0.10)]">
+                  <span
+                    aria-hidden
+                    className="text-pine/[0.06] pointer-events-none absolute -top-3 right-4 -z-10 font-serif text-[66px] leading-none"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span
+                    className={`mb-4 grid size-[48px] place-items-center rounded-[14px] ${badge} text-pine`}
+                  >
+                    <Icon className="size-[22px]" />
+                  </span>
+                  <h3 className="text-pine mt-0 mb-1.5 font-serif text-[20px]">{title}</h3>
+                  <p className="text-fern m-0 text-[14.5px] leading-[1.6]">{body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </section>
       </div>
 
       {/* CTA FINAL */}

@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { CtaLink } from "@/components/ui/cta-link";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { Parallax } from "@/components/ui/parallax";
 import { Reveal } from "@/components/ui/reveal";
 
 export const metadata: Metadata = {
@@ -72,10 +73,13 @@ export default function SubventionsPage() {
     <main>
       {/* EN-TÊTE */}
       <section className="relative overflow-hidden px-[22px] pt-[clamp(44px,7vw,82px)] pb-[clamp(28px,4vw,44px)]">
-        <div
+        <Parallax
           aria-hidden
-          className="pointer-events-none absolute -top-[120px] -right-[90px] size-[420px] max-w-[80vw] rounded-full bg-[radial-gradient(circle,rgba(199,240,60,0.28),transparent_68%)]"
-        />
+          distance={60}
+          className="pointer-events-none absolute -top-[120px] -right-[90px] size-[420px] max-w-[80vw]"
+        >
+          <div className="size-full rounded-full bg-[radial-gradient(circle,rgba(199,240,60,0.28),transparent_68%)]" />
+        </Parallax>
         <div className="relative mx-auto max-w-[880px]">
           <Reveal>
             <Eyebrow icon={<BadgeDollarSign className="size-[15px]" />}>Programmes 2026</Eyebrow>

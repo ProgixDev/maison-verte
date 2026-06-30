@@ -9,7 +9,14 @@ import { LazyMotion, MotionConfig, domAnimation } from "motion/react";
  * - `strict` makes accidental `motion.*` usage throw in development.
  * - reducedMotion="user" honors prefers-reduced-motion globally.
  */
-export { AnimatePresence, m } from "motion/react";
+export {
+  AnimatePresence,
+  m,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "motion/react";
 
 export function MotionProvider({ children }: { children: React.ReactNode }) {
   return (
