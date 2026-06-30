@@ -1,18 +1,16 @@
-import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { CtaLink } from "@/components/ui/cta-link";
 
 export default function NotFound() {
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col items-center justify-center gap-4 px-6 text-center">
-      <p className="text-muted-foreground font-mono text-sm">404</p>
-      <h1 className="text-3xl font-semibold tracking-tight">This page could not be found.</h1>
-      <p className="text-muted-foreground max-w-prose">
-        The page you’re looking for doesn’t exist or may have moved.
+      <p className="text-haze font-mono text-sm">404</p>
+      <h1 className="text-pine font-serif text-3xl tracking-tight">Cette page est introuvable.</h1>
+      <p className="text-moss max-w-prose">
+        La page que vous cherchez n’existe pas ou a peut-être été déplacée.
       </p>
-      <Link href="/" className={cn(buttonVariants({ variant: "default" }), "mt-2")}>
-        Go home
-      </Link>
+      <CtaLink href="/" className="mt-2">
+        Retour à l’accueil
+      </CtaLink>
     </main>
   );
 }

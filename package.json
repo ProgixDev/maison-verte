@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-skeleton",
+  "name": "maison-verte",
   "version": "0.1.0",
   "private": true,
   "engines": {
@@ -42,6 +42,7 @@
     "@supabase/supabase-js": "^2.58.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "lucide-react": "^1.22.0",
     "motion": "^12.40.0",
     "next": "16.2.7",
     "react": "19.2.4",
