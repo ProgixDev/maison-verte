@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 import { sendAdminMail } from "@/lib/mailer";
+import { leadEmailHtml, notifyEmailHtml } from "./email";
 
 /**
  * Lead intake for the eligibility quiz. Server actions are the only mutation path
@@ -41,14 +42,6 @@ function formatAmount(n?: number): string {
   return typeof n === "number" ? `${n.toLocaleString("fr-CA")} $` : "—";
 }
 
-function escapeHtml(value: string): string {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
-}
-
 export async function recordLead(input: unknown): Promise<ActionResult> {
   const parsed = leadSchema.safeParse(input);
   if (!parsed.success) {
@@ -71,17 +64,12 @@ export async function recordLead(input: unknown): Promise<ActionResult> {
   const text = [`Nouveau lead — admissibilité`, ``, ...rows.map(([k, v]) => `${k} : ${v}`)].join(
     "\n",
   );
-  const html = `<div style="font-family:system-ui,Segoe UI,Arial,sans-serif;color:#243027">
-    <h2 style="margin:0 0 12px;color:#123d2b">Nouveau lead — admissibilité</h2>
-    <table style="border-collapse:collapse;font-size:14px">
-      ${rows
-        .map(
-          ([k, v]) =>
-            `<tr><td style="padding:6px 16px 6px 0;color:#5c6b5e">${escapeHtml(k)}</td><td style="padding:6px 0;font-weight:600">${escapeHtml(v)}</td></tr>`,
-        )
-        .join("")}
-    </table>
-  </div>`;
+  const html = leadEmailHtml({
+    prenom: d.prenom,
+    courriel: d.courriel,
+    estimate: formatAmount(d.estimate),
+    rows,
+  });
 
   // Best-effort email; also log the payload so no lead is lost if SMTP is down.
   const sent = await sendAdminMail({
@@ -105,6 +93,7 @@ export async function recordNotify(input: unknown): Promise<ActionResult> {
   const sent = await sendAdminMail({
     subject: "Nouvelle inscription — liste d’attente",
     text: `Courriel à recontacter dès qu’un programme correspond à sa situation : ${courriel}`,
+    html: notifyEmailHtml(courriel),
     replyTo: courriel,
   });
   if (!sent) {
