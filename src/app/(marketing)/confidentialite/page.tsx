@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Lock } from "lucide-react";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/ui/reveal";
@@ -111,11 +112,11 @@ export default function ConfidentialitePage() {
 
           <h2 className="text-pine mt-8 mb-2.5 font-serif text-[24px]">9. Nous joindre</h2>
           <p className="text-moss text-[16px] leading-[1.7]">
-            Pour toute question relative à la protection de vos renseignements personnels, écrivez
-            au responsable de la protection des renseignements personnels à{" "}
-            <a href="mailto:info@climatsynergie.ca" className="text-forest font-semibold">
-              info@climatsynergie.ca
-            </a>
+            Pour toute question relative à la protection de vos renseignements personnels,
+            communiquez avec le responsable de la protection des renseignements personnels via{" "}
+            <Link href="/admissibilite" className="text-forest font-semibold">
+              le formulaire du site
+            </Link>
             .
           </p>
 

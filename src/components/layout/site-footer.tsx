@@ -1,4 +1,4 @@
-import { Mail, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import Link from "next/link";
 import { CtaLink } from "@/components/ui/cta-link";
 import { mainNav, programNav } from "@/lib/site-nav";
@@ -70,12 +70,6 @@ export function SiteFooter() {
               Nous joindre
             </h2>
             <ul className="flex list-none flex-col gap-[13px] p-0 text-[15px]">
-              <li className="flex items-center gap-2.5">
-                <Mail className="text-lime size-[17px]" />
-                <a href="mailto:info@climatsynergie.ca" className="text-sage-link break-all">
-                  info@climatsynergie.ca
-                </a>
-              </li>
               <li className="flex items-center gap-2.5">
                 <MapPin className="text-lime size-[17px]" />
                 <span>Desservant tout le Québec</span>
