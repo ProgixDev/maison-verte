@@ -113,15 +113,8 @@ export default function ConfidentialitePage() {
           <p className="text-moss text-[16px] leading-[1.7]">
             Pour toute question relative à la protection de vos renseignements personnels, écrivez
             au responsable de la protection des renseignements personnels à{" "}
-            <a
-              href="mailto:confidentialite@maisonvertequebec.ca"
-              className="text-forest font-semibold"
-            >
-              confidentialite@maisonvertequebec.ca
-            </a>{" "}
-            ou au{" "}
-            <a href="tel:+18000000000" className="text-forest font-semibold">
-              1 800 000-0000
+            <a href="mailto:info@climatsynergie.ca" className="text-forest font-semibold">
+              info@climatsynergie.ca
             </a>
             .
           </p>
