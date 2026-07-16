@@ -48,10 +48,8 @@ export const metadata: Metadata = {
     description: site.description,
     images: ["/brand-square.jpg"],
   },
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/brand-square.jpg",
-  },
+  // Icons come from the app-router file conventions: src/app/favicon.ico,
+  // icon.png, and apple-icon.png (all generated from the logo mark).
   robots: { index: true, follow: true },
 };
 
