@@ -39,12 +39,12 @@ export function SiteHeader() {
       )}
     >
       <Link href="/admissibilite" className="bg-brick block text-white">
-        <div className="mx-auto flex max-w-[1200px] items-center justify-center gap-2.5 px-[22px] py-2.5 text-center">
+        <div className="mx-auto flex max-w-[1200px] items-center justify-center gap-2.5 px-4 py-2.5 text-center min-[480px]:px-[22px]">
           <span
             aria-hidden
             className="mvq-pulse size-2 shrink-0 rounded-full bg-[#ffd2cb] shadow-[0_0_0_4px_rgba(255,255,255,0.18)]"
           />
-          <span className="text-[13.5px] leading-snug font-semibold">
+          <span className="min-w-0 text-[13.5px] leading-snug font-semibold">
             <span className="hidden min-[1000px]:inline">
               Programme fédéral CAMT — jusqu’à 10 000 $ — fin des inscriptions le 31 juillet 2026
             </span>
@@ -52,25 +52,25 @@ export function SiteHeader() {
               CAMT : jusqu’à 10 000 $ — fin le 31 juillet 2026
             </span>
           </span>
-          <span className="inline-flex shrink-0 items-center gap-1.5 text-[13.5px] font-bold whitespace-nowrap">
+          <span className="hidden shrink-0 items-center gap-1.5 text-[13.5px] font-bold whitespace-nowrap min-[400px]:inline-flex">
             Vérifier <ArrowRight className="size-3.5" />
           </span>
         </div>
       </Link>
 
       <div className="border-pine/[0.08] bg-cream/80 border-b backdrop-blur-md backdrop-saturate-150">
-        <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-3.5 px-[22px] py-3">
+        <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-2.5 px-4 py-3 min-[480px]:gap-3.5 min-[480px]:px-[22px]">
           <Link
             href="/"
             aria-label="Maison Verte Québec — Accueil"
-            className="flex shrink-0 items-center gap-3"
+            className="flex shrink-0 items-center gap-2.5 min-[480px]:gap-3"
           >
-            <LogoMark width={54} />
+            <LogoMark width={54} className="h-auto w-[44px] min-[480px]:w-[54px]" />
             <span className="flex flex-col leading-[1.04]">
-              <span className="text-pine text-[17px] leading-none font-extrabold tracking-[0.085em]">
+              <span className="text-pine text-[15px] leading-none font-extrabold tracking-[0.085em] min-[480px]:text-[17px]">
                 MAISON VERTE
               </span>
-              <span className="text-forest mt-[3px] text-[10.5px] leading-none font-semibold tracking-[0.34em]">
+              <span className="text-forest mt-[3px] text-[9.5px] leading-none font-semibold tracking-[0.34em] min-[480px]:text-[10.5px]">
                 QUÉBEC
               </span>
             </span>
@@ -117,14 +117,14 @@ export function SiteHeader() {
             })}
           </nav>
 
-          <div className="flex shrink-0 items-center gap-2.5">
+          <div className="flex shrink-0 items-center gap-2 min-[480px]:gap-2.5">
             <CtaLink href="/admissibilite" size="sm" className="hidden min-[1000px]:inline-flex">
               Vérifier mon admissibilité
             </CtaLink>
             <CtaLink
               href="/admissibilite"
               size="sm"
-              className="px-[15px] py-2.5 text-sm min-[1000px]:hidden"
+              className="px-3.5 py-2.5 text-sm min-[480px]:px-[15px] min-[1000px]:hidden"
             >
               Vérifier
             </CtaLink>

@@ -8,7 +8,9 @@ import { cn } from "@/lib/utils";
  * Variants own color/shadow; the call site owns margin/width (docs/conventions/styling.md).
  */
 const ctaVariants = cva(
-  "group focus-visible:ring-forest focus-visible:ring-offset-cream inline-flex items-center justify-center gap-2.5 rounded-full font-bold whitespace-nowrap transition-[transform,box-shadow,background-color] duration-200 outline-none hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-offset-2",
+  // max-w-full + wrapping (not nowrap) so long labels shrink into the pill on
+  // narrow screens instead of blowing out the page width on mobile.
+  "group focus-visible:ring-forest focus-visible:ring-offset-cream inline-flex max-w-full items-center justify-center gap-2.5 rounded-full text-center leading-snug font-bold transition-[transform,box-shadow,background-color] duration-200 outline-none hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-offset-2",
   {
     variants: {
       variant: {
