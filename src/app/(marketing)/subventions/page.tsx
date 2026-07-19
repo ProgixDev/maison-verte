@@ -67,7 +67,7 @@ const multiRows = [
   {
     icon: Zap,
     term: "Particularité",
-    desc: "S’ajoute automatiquement à LogisVert, pour les installations dès le 15 juin 2026.",
+    desc: "S’ajoute automatiquement à la subvention LogisVert Thermopompe.",
   },
 ];
 
@@ -179,7 +179,7 @@ export default function SubventionsPage() {
                 <Building2 className="size-[25px]" />
               </span>
               <span className="bg-leaf text-forest inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12px] font-bold">
-                <span className="bg-forest size-[7px] rounded-full" /> Actif · dès juin 2026
+                <span className="bg-forest size-[7px] rounded-full" /> Actif en 2026
               </span>
             </div>
             <h2 className="text-pine mt-[18px] mb-0.5 font-serif text-[27px]">

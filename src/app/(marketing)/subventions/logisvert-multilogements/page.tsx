@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import {
   ArrowLeft,
   Building2,
-  CalendarClock,
   Check,
   CircleCheckBig,
   Info,
@@ -80,7 +79,7 @@ const conditionGroups = [
     items: [
       "Thermopompe efficace admissible à LogisVert (ENERGY STAR®)",
       "Installation par un entrepreneur licencié RBQ",
-      "Installation réalisée à compter du 15 juin 2026",
+      "Thermopompe neuve, achetée et installée au Québec",
     ],
   },
 ];
@@ -118,8 +117,7 @@ export default function LogisVertMultilogementsPage() {
           </Reveal>
           <Reveal>
             <span className="bg-leaf text-forest ml-1.5 inline-flex items-center gap-2 rounded-full px-3.5 py-[7px] text-[12.5px] font-bold tracking-[0.04em]">
-              <span className="bg-forest size-[7px] rounded-full" /> Actif · installations dès le 15
-              juin 2026
+              <span className="bg-forest size-[7px] rounded-full" /> Actif en 2026
             </span>
           </Reveal>
           <Reveal
@@ -308,11 +306,11 @@ export default function LogisVertMultilogementsPage() {
             </div>
             <div className="bg-sage rounded-2xl p-5">
               <div className="mb-1.5 flex items-center gap-[9px]">
-                <CalendarClock className="text-forest size-[19px]" />
-                <span className="text-pine font-bold">Dès le 15 juin 2026</span>
+                <MapPin className="text-forest size-[19px]" />
+                <span className="text-pine font-bold">En zone admissible</span>
               </div>
               <p className="text-moss m-0 text-[14.5px]">
-                Valable pour les installations réalisées à compter de cette date.
+                S’applique aux immeubles situés dans une zone désignée par Hydro-Québec.
               </p>
             </div>
           </div>
