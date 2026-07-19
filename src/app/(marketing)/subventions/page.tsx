@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import {
   BadgeDollarSign,
   Banknote,
+  Building2,
   Calculator,
   CircleCheckBig,
   Flame,
   Info,
+  MapPin,
   Snowflake,
+  TrendingUp,
   Users,
   Zap,
 } from "lucide-react";
@@ -16,9 +19,9 @@ import { Parallax } from "@/components/ui/parallax";
 import { Reveal } from "@/components/ui/reveal";
 
 export const metadata: Metadata = {
-  title: "Subventions — LogisVert et CAMT",
+  title: "Subventions — LogisVert, multilogements et CAMT",
   description:
-    "Deux programmes gouvernementaux, jusqu’à 16 950 $ pour remplacer votre système de chauffage au Québec en 2026.",
+    "Les programmes gouvernementaux actifs en 2026 pour remplacer votre système de chauffage au Québec : LogisVert, la bonification multilogements et le CAMT.",
   alternates: { canonical: "/subventions" },
 };
 
@@ -42,6 +45,29 @@ const logisVertRows = [
     icon: Banknote,
     term: "Versement",
     desc: "Dépôt direct, 6 à 12 semaines après installation.",
+  },
+];
+
+const multiRows = [
+  {
+    icon: Building2,
+    term: "Pour qui",
+    desc: "Propriétaires d’un immeuble de 2 logements ou plus (plex, petit multilogement).",
+  },
+  {
+    icon: TrendingUp,
+    term: "Montant",
+    desc: "+100 $ par 1 000 BTU/h, jusqu’à 220 $ au total — jusqu’à 83 % de plus que le montant standard.",
+  },
+  {
+    icon: MapPin,
+    term: "Conditions",
+    desc: "Immeuble construit en 1995 ou avant, un compteur par logement, en zone désignée par Hydro-Québec.",
+  },
+  {
+    icon: Zap,
+    term: "Particularité",
+    desc: "S’ajoute automatiquement à LogisVert, pour les installations dès le 15 juin 2026.",
   },
 ];
 
@@ -89,16 +115,17 @@ export default function SubventionsPage() {
             delay={80}
             className="text-pine mt-[18px] font-serif text-[clamp(32px,5vw,56px)] leading-[1.06] tracking-[-0.015em]"
           >
-            Deux programmes. Jusqu’à 16 950 $ pour votre maison.
+            Les programmes actifs. Jusqu’à 16 950 $ pour votre maison.
           </Reveal>
           <Reveal
             as="p"
             delay={160}
             className="text-moss mt-5 max-w-[60ch] text-[clamp(16px,1.6vw,18.5px)] leading-[1.65]"
           >
-            En 2026, deux programmes gouvernementaux permettent aux propriétaires québécois de
-            financer une grande partie du remplacement de leur système de chauffage. Voici lesquels,
-            combien, et qui peut en bénéficier.
+            En 2026, plusieurs programmes gouvernementaux permettent aux propriétaires québécois de
+            financer une grande partie du remplacement de leur système de chauffage — dont une
+            bonification pour les multilogements. Voici lesquels, combien, et qui peut en
+            bénéficier.
           </Reveal>
         </div>
       </section>
@@ -139,6 +166,49 @@ export default function SubventionsPage() {
             </dl>
             <CtaLink href="/subventions/logisvert" variant="dark" className="text-[15.5px]">
               Découvrir LogisVert en détail
+            </CtaLink>
+          </Reveal>
+
+          {/* Bonification multilogements */}
+          <Reveal
+            delay={50}
+            className="border-pine/10 bg-card flex flex-col rounded-[24px] border p-[clamp(26px,4vw,34px)] shadow-[0_12px_32px_rgba(18,61,43,0.06)]"
+          >
+            <div className="flex items-center justify-between gap-3">
+              <span className="bg-mint text-pine grid size-[52px] place-items-center rounded-[14px]">
+                <Building2 className="size-[25px]" />
+              </span>
+              <span className="bg-leaf text-forest inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12px] font-bold">
+                <span className="bg-forest size-[7px] rounded-full" /> Actif · dès juin 2026
+              </span>
+            </div>
+            <h2 className="text-pine mt-[18px] mb-0.5 font-serif text-[27px]">
+              Multilogements — Bonification
+            </h2>
+            <div className="text-pine mt-1.5 font-serif text-[38px] leading-none">
+              Jusqu’à 220 $ <span className="text-[19px]">/ 1 000 BTU</span>
+            </div>
+            <p className="text-fern mt-3.5 mb-[18px] text-[15.5px] leading-[1.6]">
+              Une bonification du gouvernement du Québec qui s’ajoute à LogisVert pour les immeubles
+              de deux logements ou plus situés en zone admissible.
+            </p>
+            <dl className="mb-[22px] flex flex-1 flex-col gap-[13px]">
+              {multiRows.map(({ icon: Icon, term, desc }) => (
+                <div key={term} className="flex gap-[11px]">
+                  <Icon className="text-forest mt-0.5 size-[18px] shrink-0" />
+                  <div>
+                    <dt className="text-pine text-[14.5px] font-bold">{term}</dt>
+                    <dd className="text-fern mt-0.5 text-[14.5px]">{desc}</dd>
+                  </div>
+                </div>
+              ))}
+            </dl>
+            <CtaLink
+              href="/subventions/logisvert-multilogements"
+              variant="dark"
+              className="text-[15.5px]"
+            >
+              Découvrir la bonification
             </CtaLink>
           </Reveal>
 

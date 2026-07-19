@@ -17,6 +17,7 @@ export const mainNav: NavLink[] = [
 
 export const programNav: NavLink[] = [
   { label: "LogisVert (Hydro-Québec)", href: "/subventions/logisvert" },
+  { label: "Bonification multilogements", href: "/subventions/logisvert-multilogements" },
   { label: "CAMT (Ressources naturelles Canada)", href: "/subventions/camt" },
 ];
 
