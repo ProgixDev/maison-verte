@@ -192,8 +192,8 @@ export default function SubventionsPage() {
               par 1 000 BTU/h — bonification incluse
             </div>
             <p className="text-fern mt-3.5 mb-[18px] text-[15.5px] leading-[1.6]">
-              Une bonification du gouvernement du Québec qui s’ajoute à LogisVert pour les immeubles
-              de deux logements ou plus situés en zone admissible.
+              Une bonification du gouvernement du Québec qui s’ajoute à LogisVert pour les
+              thermopompes murales climat froid dans les immeubles de deux logements ou plus.
             </p>
             <dl className="mb-[22px] flex flex-1 flex-col gap-[13px]">
               {multiRows.map(({ icon: Icon, term, desc }) => (

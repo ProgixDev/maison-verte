@@ -38,8 +38,8 @@ const rates = [
     amount: "220 $",
     body: (
       <>
-        par 1 000 BTU/h : le montant <strong className="text-pine">total possible</strong> une fois
-        la bonification appliquée
+        par 1 000 BTU/h à −8 °C (au lieu de 120 $) pour une{" "}
+        <strong className="text-pine">thermopompe murale de type climat froid</strong>
       </>
     ),
   },
@@ -47,8 +47,8 @@ const rates = [
     amount: "+83 %",
     body: (
       <>
-        d’aide en plus par rapport au montant <strong className="text-pine">standard</strong> pour
-        une thermopompe efficace
+        d’aide en plus pour l’<strong className="text-pine">achat et l’installation</strong> d’une
+        thermopompe efficace
       </>
     ),
   },
@@ -77,7 +77,7 @@ const conditionGroups = [
     icon: Snowflake,
     title: "Côté équipement",
     items: [
-      "Thermopompe efficace admissible à LogisVert (ENERGY STAR®)",
+      "Thermopompe murale certifiée ENERGY STAR® – Climat froid",
       "Installation par un entrepreneur licencié RBQ",
       "Thermopompe neuve, achetée et installée au Québec",
     ],
@@ -162,15 +162,17 @@ export default function LogisVertMultilogementsPage() {
             La bonification en bref
           </h2>
           <p className="text-moss mt-4 text-[16.5px] leading-[1.68]">
-            Pour rendre les thermopompes plus accessibles dans les immeubles à logements, le
-            gouvernement du Québec bonifie l’aide financière de LogisVert. Concrètement, une somme
-            supplémentaire s’ajoute à la subvention Thermopompe habituelle lorsque l’immeuble est
-            admissible.
+            Grâce au <strong className="text-pine">Plan pour une économie verte 2030</strong>, le
+            gouvernement du Québec bonifie l’aide financière de LogisVert pour aider les
+            propriétaires de multilogements à améliorer la performance énergétique de leur bâtiment
+            à faible coût. Une somme supplémentaire s’ajoute à la subvention pour l’achat et
+            l’installation de thermopompes murales certifiées ENERGY STAR® – Climat froid dans les
+            logements.
           </p>
           <p className="text-moss mt-3.5 text-[16.5px] leading-[1.68]">
-            La bonification vise en priorité les immeubles plus anciens situés dans des zones de
-            précarité énergétique, afin que locataires et propriétaires y profitent d’un chauffage
-            plus efficace et de factures réduites.
+            Elle vise les immeubles situés dans une zone de précarité énergétique désignée par
+            Hydro-Québec, afin que propriétaires et locataires profitent d’un chauffage plus
+            efficace et de factures réduites.
           </p>
         </Reveal>
 
@@ -236,9 +238,9 @@ export default function LogisVertMultilogementsPage() {
             </table>
           </Reveal>
           <Reveal as="p" className="text-stone mt-4 text-[14.5px]">
-            Estimations à 220 $ par 1 000 BTU/h, à titre indicatif. Le montant exact dépend du
-            modèle installé et de l’admissibilité de l’immeuble — notre équipe le confirme dès
-            l’analyse.
+            Estimations à 220 $ par 1 000 BTU/h pour une thermopompe murale climat froid, à titre
+            indicatif. Le montant exact dépend du modèle installé et de l’admissibilité de
+            l’immeuble — notre équipe le confirme dès l’analyse.
           </Reveal>
         </section>
 
