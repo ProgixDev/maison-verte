@@ -132,7 +132,7 @@ export default function SubventionsPage() {
 
       {/* DEUX CARTES */}
       <section className="px-[22px] pt-[clamp(16px,3vw,28px)] pb-[clamp(40px,6vw,56px)]">
-        <div className="mx-auto grid max-w-[1080px] grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[22px]">
+        <div className="mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6">
           {/* LogisVert */}
           <Reveal className="border-pine/10 bg-card flex flex-col rounded-[24px] border p-[clamp(26px,4vw,34px)] shadow-[0_12px_32px_rgba(18,61,43,0.06)]">
             <div className="flex items-center justify-between gap-3">
@@ -186,7 +186,10 @@ export default function SubventionsPage() {
               Multilogements — Bonification
             </h2>
             <div className="text-pine mt-1.5 font-serif text-[38px] leading-none">
-              Jusqu’à 220 $ <span className="text-[19px]">/ 1 000 BTU</span>
+              Jusqu’à 220 $
+            </div>
+            <div className="text-fern mt-1.5 text-[13.5px] font-semibold">
+              par 1 000 BTU/h — bonification incluse
             </div>
             <p className="text-fern mt-3.5 mb-[18px] text-[15.5px] leading-[1.6]">
               Une bonification du gouvernement du Québec qui s’ajoute à LogisVert pour les immeubles
@@ -255,7 +258,7 @@ export default function SubventionsPage() {
 
       {/* CUMUL */}
       <section className="px-[22px] pb-[clamp(56px,8vw,90px)]">
-        <Reveal className="bg-pine text-cream-soft relative mx-auto max-w-[1080px] overflow-hidden rounded-[28px] p-[clamp(32px,5vw,56px)]">
+        <Reveal className="bg-pine text-cream-soft relative mx-auto max-w-[1200px] overflow-hidden rounded-[28px] p-[clamp(32px,5vw,56px)]">
           <div
             aria-hidden
             className="pointer-events-none absolute -top-[90px] -right-[70px] size-[320px] rounded-full bg-[radial-gradient(circle,rgba(199,240,60,0.18),transparent_66%)]"
