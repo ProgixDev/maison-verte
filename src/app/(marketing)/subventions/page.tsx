@@ -157,7 +157,7 @@ export default function SubventionsPage() {
 
       {/* DEUX CARTES */}
       <section className="px-[22px] pt-[clamp(16px,3vw,28px)] pb-[clamp(40px,6vw,56px)]">
-        <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mx-auto grid max-w-[1000px] grid-cols-1 gap-6 sm:grid-cols-2">
           {/* LogisVert */}
           <Reveal className="border-pine/10 bg-card flex flex-col rounded-[24px] border p-[clamp(26px,4vw,34px)] shadow-[0_12px_32px_rgba(18,61,43,0.06)]">
             <div className="flex items-center justify-between gap-3">
