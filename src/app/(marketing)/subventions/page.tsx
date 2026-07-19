@@ -6,11 +6,13 @@ import {
   Calculator,
   CircleCheckBig,
   Flame,
+  House,
   Info,
   MapPin,
   Snowflake,
   TrendingUp,
   Users,
+  Wind,
   Zap,
 } from "lucide-react";
 import { CtaLink } from "@/components/ui/cta-link";
@@ -19,9 +21,9 @@ import { Parallax } from "@/components/ui/parallax";
 import { Reveal } from "@/components/ui/reveal";
 
 export const metadata: Metadata = {
-  title: "Subventions — LogisVert, multilogements et CAMT",
+  title: "Subventions chauffage et isolation — Québec 2026",
   description:
-    "Les programmes gouvernementaux actifs en 2026 pour remplacer votre système de chauffage au Québec : LogisVert, la bonification multilogements et le CAMT.",
+    "Les programmes gouvernementaux actifs en 2026 au Québec : LogisVert (thermopompe), la bonification multilogements, l’isolation de toit et calfeutrage, et le CAMT.",
   alternates: { canonical: "/subventions" },
 };
 
@@ -68,6 +70,29 @@ const multiRows = [
     icon: Zap,
     term: "Particularité",
     desc: "S’ajoute automatiquement à la subvention LogisVert Thermopompe.",
+  },
+];
+
+const isolationRows = [
+  {
+    icon: Users,
+    term: "Pour qui",
+    desc: "Propriétaires d’une résidence au Québec, clients Hydro-Québec.",
+  },
+  {
+    icon: Calculator,
+    term: "Montant",
+    desc: "1 500 $ pour l’isolation du toit et le calfeutrage.",
+  },
+  {
+    icon: Wind,
+    term: "Pourquoi",
+    desc: "Les fuites d’air peuvent représenter jusqu’à 25 % des pertes de chaleur d’une maison.",
+  },
+  {
+    icon: CircleCheckBig,
+    term: "Conditions",
+    desc: "Travaux admissibles réalisés selon les exigences du programme LogisVert.",
   },
 ];
 
@@ -132,7 +157,7 @@ export default function SubventionsPage() {
 
       {/* DEUX CARTES */}
       <section className="px-[22px] pt-[clamp(16px,3vw,28px)] pb-[clamp(40px,6vw,56px)]">
-        <div className="mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6">
+        <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {/* LogisVert */}
           <Reveal className="border-pine/10 bg-card flex flex-col rounded-[24px] border p-[clamp(26px,4vw,34px)] shadow-[0_12px_32px_rgba(18,61,43,0.06)]">
             <div className="flex items-center justify-between gap-3">
@@ -212,6 +237,49 @@ export default function SubventionsPage() {
               className="text-[15.5px]"
             >
               Découvrir la bonification
+            </CtaLink>
+          </Reveal>
+
+          {/* Isolation de toit et calfeutrage */}
+          <Reveal
+            delay={100}
+            className="border-pine/10 bg-card flex flex-col rounded-[24px] border p-[clamp(26px,4vw,34px)] shadow-[0_12px_32px_rgba(18,61,43,0.06)]"
+          >
+            <div className="flex items-center justify-between gap-3">
+              <span className="bg-mint text-pine grid size-[52px] place-items-center rounded-[14px]">
+                <House className="size-[25px]" />
+              </span>
+              <span className="bg-leaf text-forest inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12px] font-bold">
+                <span className="bg-forest size-[7px] rounded-full" /> Actif en 2026
+              </span>
+            </div>
+            <h2 className="text-pine mt-[18px] mb-0.5 font-serif text-[27px]">
+              Isolation de toit et calfeutrage
+            </h2>
+            <div className="text-pine mt-1.5 font-serif text-[38px] leading-none">
+              Jusqu’à 1 500 $
+            </div>
+            <p className="text-fern mt-3.5 mb-[18px] text-[15.5px] leading-[1.6]">
+              Une mesure LogisVert pour réduire les fuites d’air, réaliser des économies et
+              améliorer votre confort l’hiver.
+            </p>
+            <dl className="mb-[22px] flex flex-1 flex-col gap-[13px]">
+              {isolationRows.map(({ icon: Icon, term, desc }) => (
+                <div key={term} className="flex gap-[11px]">
+                  <Icon className="text-forest mt-0.5 size-[18px] shrink-0" />
+                  <div>
+                    <dt className="text-pine text-[14.5px] font-bold">{term}</dt>
+                    <dd className="text-fern mt-0.5 text-[14.5px]">{desc}</dd>
+                  </div>
+                </div>
+              ))}
+            </dl>
+            <CtaLink
+              href="/subventions/isolation-calfeutrage"
+              variant="dark"
+              className="text-[15.5px]"
+            >
+              Découvrir la mesure
             </CtaLink>
           </Reveal>
 
