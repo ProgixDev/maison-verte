@@ -1,23 +1,19 @@
 # What & why
 
-<!-- Two or three sentences. Link the spec for feature-track work: specs/NNN-slug/ -->
+<!-- Two or three sentences: what changed, and why it was needed. -->
 
-- **Track:** quick / feature
-- **Spec:** specs/NNN-slug/ (feature track) or n/a
-- **Feature report:** docs/reports/NNN-slug.md (feature track) or n/a
-
-## Definition of Done (docs/process/definition-of-done.md)
+## Checklist
 
 - [ ] `pnpm verify` passes locally
 - [ ] Tests added/updated (bug fix ⇒ regression test)
 - [ ] No gate weakened (or justified below and isolated in its own commit)
-- [ ] Docs updated where behavior/structure changed
-- [ ] Feature track: `/verify-ui` run, screenshots inspected, `/review` P0/P1 fixed, report generated
+- [ ] Docs updated where behavior or structure changed
+- [ ] Figures shown to users trace to an official Hydro-Québec / NRCan source
 
 ## Screenshots (UI changes)
 
-<!-- Paste the relevant shots from artifacts/screenshots/ or link the report. Before/after for modified UI. -->
+<!-- Before/after for modified UI. Shots from artifacts/screenshots/ are fine. -->
 
 ## Notes for reviewers
 
-<!-- Decisions, trade-offs, declined persona findings (with reasons), anything you want eyes on. -->
+<!-- Decisions, trade-offs, anything you want eyes on. -->

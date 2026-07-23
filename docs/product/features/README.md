@@ -1,12 +1,12 @@
-# Feature Docs — living memory
+# Feature Docs
 
-One file per shipped feature. These are the **spec-anchored long-term memory**: specs in `specs/` describe a change while it's in flight; after ship, `/update-docs` distills the result here and the spec is archived. Agents ground on these when modifying existing behavior — keep them truthful or they poison every future change.
+One file per shipped feature — the long-term memory of how a piece of the site actually works and why. Whoever changes a feature next reads its doc first, so keep them truthful.
 
 ## Rules
 
-- File name = feature slug (matches `src/features/<slug>/` when one exists): `task-list.md`.
-- Update in the same PR that changes the behavior (Definition of Done item).
-- When a feature is removed, don't delete the doc — add a final "Removed in #PR, because…" line and move it to `archive/` (cheap institutional memory).
+- File name = feature slug (matches `src/features/<slug>/` when one exists): `eligibility.md`.
+- Update in the same PR that changes the behavior.
+- When a feature is removed, don't delete the doc — add a final "Removed in #PR, because…" line and move it to `archive/`.
 
 ## Template
 
@@ -14,7 +14,6 @@ One file per shipped feature. These are the **spec-anchored long-term memory**: 
 # <Feature name>
 
 **Status:** live | experiment | removed · **Slice:** src/features/<slug> · **Routes:** /…
-**Spec history:** specs/NNN-slug (shipped YYYY-MM-DD), …
 
 ## What it does (user terms)
 
@@ -35,6 +34,6 @@ Key components, store, actions; anything non-obvious.
 
 ## Index
 
-| Feature          | Status | Doc                          |
-| ---------------- | ------ | ---------------------------- |
-| Task list (demo) | live   | [task-list.md](task-list.md) |
+| Feature                 | Status | Doc |
+| ----------------------- | ------ | --- |
+| _(none documented yet)_ | —      | —   |

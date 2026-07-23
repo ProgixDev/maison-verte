@@ -2,7 +2,7 @@
 
 ## What this is
 
-A single Next.js application (App Router, React Server Components) that serves as the canonical skeleton for the company's websites and web apps. It is optimized for two audiences at once: human engineers and AI coding agents. Everything that makes code "good" here is written down and, where possible, machine-enforced.
+A single Next.js application (App Router, React Server Components) serving the Maison Verte Québec marketing site and its eligibility quiz. The conventions that make code "good" here are written down and, where possible, machine-enforced, so the codebase stays consistent as it changes hands.
 
 ## Stack
 
@@ -42,10 +42,9 @@ src/
   hooks/       shared generic hooks
   lib/         shared pure utilities
   core/        env validation, app config, constants — imports nothing internal
-e2e/           Playwright CUJ tests
-specs/         feature specs (SDD) + constitution
+e2e/           Playwright journey tests
 docs/          this tree
-scripts/       repo automation (checks, hooks, report generation)
+scripts/       repo checks (docs links, typography, secrets, web readiness)
 artifacts/     generated, gitignored (screenshots, traces)
 ```
 
@@ -53,15 +52,15 @@ Import rules between these layers are enforced by ESLint — see [module-boundar
 
 ## Quality gates (defense in depth)
 
-| Gate                          | Where                     | Catches                                             |
-| ----------------------------- | ------------------------- | --------------------------------------------------- |
-| TypeScript strict             | editor + CI               | type errors                                         |
-| ESLint (+ boundaries)         | editor + pre-commit + CI  | style, layer violations                             |
-| Prettier                      | on-edit hook + pre-commit | formatting                                          |
-| Vitest                        | CI                        | logic regressions                                   |
-| Playwright + screenshots      | CI + `/verify-ui`         | broken CUJs, visual regressions                     |
-| check:docs / check:typography | CI                        | dead doc links, copy violations                     |
-| Persona review (AI)           | PR via claude-code-action | architecture/security/QA issues before human review |
-| Human review                  | PR                        | intent, taste, product fit                          |
+| Gate                          | Where                      | Catches                         |
+| ----------------------------- | -------------------------- | ------------------------------- |
+| TypeScript strict             | editor + `pnpm verify`     | type errors                     |
+| ESLint (+ boundaries)         | editor + pre-commit        | style, layer violations         |
+| Prettier                      | pre-commit                 | formatting                      |
+| Vitest                        | `pnpm verify`              | logic regressions               |
+| Playwright + screenshots      | `pnpm e2e`                 | broken journeys                 |
+| check:docs / check:typography | `pnpm verify`              | dead doc links, copy violations |
+| check:secrets                 | pre-commit + `pnpm verify` | committed credentials           |
+| Human review                  | PR                         | intent, taste, product fit      |
 
-The order matters: cheap deterministic gates run first so expensive reviewers (AI and human) only see plausible work.
+The order matters: cheap deterministic gates run first, so review only ever looks at plausible work. Everything runs locally — `pnpm verify` is the single command that must be green before a merge.

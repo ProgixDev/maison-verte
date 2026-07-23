@@ -1,34 +1,40 @@
 # Product Overview
 
-> **This file is a template placeholder.** When you clone the skeleton for a real project, this is the FIRST file to fill in — every agent grounds product decisions here. Keep it under a page.
-
 ## What this product is
 
-NEXTJS-SKELETON itself is the product right now: a canonical starting point for our company's websites and web apps, plus the demo feature used to prove the harness end-to-end (`task-list`).
+Maison Verte Québec helps Quebec homeowners claim the heating subsidies they are entitled to — Hydro-Québec's **LogisVert** and the federal **CAMT** program, up to 16 950 $ combined — and connects them with an RBQ-certified installer.
 
-For a real project, replace with: the one-paragraph pitch — who the user is, the problem, the bet.
+The site's job is to turn a homeowner who has vaguely heard of "government heat-pump money" into a qualified lead: explain the programs in plain French, let them self-assess in a two-minute quiz, and hand the resulting contact details to the team.
 
 ## Users
 
-| User                      | Wants                                          | Success looks like                                                      |
-| ------------------------- | ---------------------------------------------- | ----------------------------------------------------------------------- |
-| Engineers & AI agents     | Start a project with quality encoded           | First feature shipped on day one without process questions              |
-| PMs / designers / testers | Ship via specs and reviews, not by asking devs | A spec becomes a verified, reported PR without synchronous hand-holding |
+| User                 | Wants                                                            | Success looks like                                               |
+| -------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| Quebec homeowner     | To know if they qualify and how much they get, without paperwork | Completes the eligibility quiz and submits their contact details |
+| Maison Verte advisor | Qualified leads with enough context to call back informed        | Lead arrives with home type, heating system, and estimate        |
 
 ## What we will NOT do (anti-goals)
 
-- No multi-app monorepo (see ADR-0001) — clone per project instead.
-- No backend platform here: the skeleton stubs persistence; real projects add their data layer behind `features/*/actions.ts` and record it in an ADR.
+- No account system, no customer portal — the site is a lead funnel, not an application.
+- No online submission of the actual subsidy file; that happens with an advisor.
+- No claims of exact amounts without a source. Every figure on the site traces to the official Hydro-Québec or Natural Resources Canada page, and is updated when those pages change.
 
 ## Current feature map
+
+| Area             | Where                              | Notes                                                        |
+| ---------------- | ---------------------------------- | ------------------------------------------------------------ |
+| Marketing pages  | `src/app/(marketing)/`             | Server Components; home, programs, how it works, FAQ, about  |
+| Eligibility quiz | `src/features/eligibility/`        | Branching questions, estimate, zod-validated lead submission |
+| Program detail   | `src/app/(marketing)/subventions/` | One page per program measure                                 |
 
 Living per-feature docs: [features/](features/README.md). Journeys that must never break: [critical-user-journeys.md](critical-user-journeys.md).
 
 ## Glossary
 
-| Term         | Meaning here                                                        |
-| ------------ | ------------------------------------------------------------------- |
-| CUJ          | Critical user journey — an e2e-tested, screenshot-evidenced path    |
-| Slice        | A `src/features/<name>` vertical module                             |
-| Harness      | Everything that steers agents: docs, gates, skills, hooks, personas |
-| Painted door | UI experiment with a no-op backend (see process/painted-door.md)    |
+| Term      | Meaning here                                                                        |
+| --------- | ----------------------------------------------------------------------------------- |
+| LogisVert | Hydro-Québec's efficient-heating program (heat pumps, insulation, weatherstripping) |
+| CAMT      | Canada Greener Homes / oil-to-heat-pump federal program                             |
+| RBQ       | Régie du bâtiment du Québec — the licence a certified installer holds               |
+| Slice     | A `src/features/<name>` vertical module                                             |
+| Lead      | A completed quiz plus contact details, handed to an advisor                         |

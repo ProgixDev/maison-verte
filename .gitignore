@@ -13,12 +13,9 @@ coverage/
 playwright-report/
 test-results/
 
-# generated evidence — curated copies live in docs/reports/<slug>/img instead
+# generated test evidence (screenshots, traces)
 artifacts/*
 !artifacts/.gitkeep
-
-# generated report PDFs (share them, don't version them)
-docs/reports/*.pdf
 
 # env — only the example is committed
 .env
@@ -33,7 +30,3 @@ docs/reports/*.pdf
 .vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
-
-# local agent scratch
-.claude/settings.local.json
-CLAUDE.local.md

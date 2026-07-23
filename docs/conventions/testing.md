@@ -1,6 +1,6 @@
 # Testing Conventions
 
-Tests are the harness's strongest prompt-injection mechanism: a failing test tells the agent exactly what to do. Write tests that encode intent, not implementation.
+A failing test should tell you exactly what broke and why it mattered. Write tests that encode intent, not implementation.
 
 ## The pyramid here
 
@@ -9,7 +9,7 @@ Tests are the harness's strongest prompt-injection mechanism: a failing test tel
 | Unit            | Vitest (+ Testing Library, jsdom) | colocated `src/**/*.test.ts(x)` | store logic, lib functions, component behavior |
 | E2E / CUJ       | Playwright                        | `e2e/*.spec.ts`                 | critical user journeys against the real app    |
 | Visual evidence | Playwright screenshots            | `artifacts/screenshots/`        | what shipped actually looks like               |
-| Repo gates      | node scripts (`scripts/`)         | CI + hooks                      | docs links, typography, boundaries             |
+| Repo gates      | node scripts (`scripts/`)         | `pnpm verify` + hooks           | docs links, typography, secrets                |
 
 ## Unit rules
 
@@ -23,8 +23,8 @@ Tests are the harness's strongest prompt-injection mechanism: a failing test tel
 
 - One spec per critical user journey (`docs/product/critical-user-journeys.md`); name specs after the journey, not the page.
 - Use accessible selectors (`getByRole`, `getByLabel`) — `data-testid` is the escape hatch, not the default.
-- Every journey captures labeled screenshots via the `shot()` helper (`e2e/utils/shot.ts`) — these are the evidence `/verify-ui` and `/feature-report` consume. `FEATURE=<slug> pnpm e2e:shots` routes them to `artifacts/screenshots/<slug>/`.
-- E2E runs against a production build in CI (`pnpm build && pnpm start` via Playwright `webServer`).
+- Every journey captures labeled screenshots via the `shot()` helper (`e2e/utils/shot.ts`). `FEATURE=<slug> pnpm e2e:shots` routes them to `artifacts/screenshots/<slug>/` — look at them before calling UI work done.
+- Run E2E against a production build before a release (`pnpm build && pnpm start`, then `pnpm e2e`).
 
 ## What NOT to test
 
@@ -32,4 +32,4 @@ Tests are the harness's strongest prompt-injection mechanism: a failing test tel
 
 ## Coverage philosophy
 
-No percentage mandate. Instead: every acceptance criterion in a spec maps to at least one test (unit or e2e), and `/plan-feature` writes that mapping into `tasks.md`. The review personas check the mapping, not a number.
+No percentage mandate. Instead: every behavior you would be embarrassed to break maps to at least one test (unit or e2e). Review checks that mapping, not a number.

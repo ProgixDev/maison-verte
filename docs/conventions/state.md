@@ -48,5 +48,5 @@ A `Provider` + `useTaskListStore(selector)` hook wrap it (see `src/features/task
 - Actions live **inside** the store and are named for devtools (`"feature/action"`). Components never call `set` directly.
 - Store holds client/UI state only — it is not a server cache. Don't copy fetched data into a store unless you're managing optimistic updates on it.
 - Keep stores flat; derive computed values in selectors or components, don't store them.
-- Persisting to storage (`persist` middleware) is opt-in per store and reviewed (privacy: see appsec persona).
+- Persisting to storage (`persist` middleware) is opt-in per store and needs a privacy review — the quiz collects personal data (Loi 25).
 - Test stores headlessly: create the store in the test, call actions, assert state (`store.getState()`), no React needed.

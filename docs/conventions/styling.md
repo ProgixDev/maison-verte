@@ -27,4 +27,4 @@
 - No visual drift: same radius, shadow, and spacing tokens as sibling UI.
 - Interactive states are designed: hover, focus-visible, active, disabled — all of them.
 - Empty, loading, and error states styled, not afterthoughts.
-- Screenshot evidence: any visual change shows up in `/verify-ui` shots — look at them before declaring done.
+- Screenshot evidence: any visual change shows up in `pnpm e2e:shots` output — look at the shots before declaring done.

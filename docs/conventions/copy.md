@@ -21,4 +21,4 @@ User-facing text is product surface, not string literals. These rules are partia
 
 - All user-visible strings live in components/feature files (not buried in libs) so the typography checker and future i18n extraction can find them.
 - Dates/numbers via `Intl.*` formatters in `src/lib/format.ts` — never hand-rolled.
-- Writing or reviewing copy? The `/review` UX persona checks against this file.
+- `pnpm check:typography` enforces the quote and ellipsis rules on JSX text; the rest of this file is checked in review.

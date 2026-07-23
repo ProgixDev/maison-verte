@@ -1,8 +1,9 @@
 # Threat model (web)
 
-Apps built from this skeleton ship with auth, payments, and sensitive personal data. We assume a
-motivated attacker who can read the client bundle and all network traffic, replay requests, and
-hit any API route or Server Action directly (not just through the UI).
+This site collects personal data from homeowners (contact details, home characteristics), which
+makes it a target worth protecting under Loi 25. We assume a motivated attacker who can read the
+client bundle and all network traffic, replay requests, and hit any API route or Server Action
+directly (not just through the UI).
 
 ## Core principle
 

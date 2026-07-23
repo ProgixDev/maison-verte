@@ -7,7 +7,7 @@ import boundaries from "eslint-plugin-boundaries";
  * The boundaries section encodes docs/architecture/module-boundaries.md:
  *   app → features → shared(components,hooks,lib) → core
  * plus "features are imported only via their index.ts public API".
- * Changing it is an architectural decision: dedicated PR + ADR (Constitution Art. IV/V).
+ * Changing it is an architectural decision: dedicated PR + ADR.
  */
 const eslintConfig = defineConfig([
   ...nextVitals,
@@ -21,9 +21,6 @@ const eslintConfig = defineConfig([
     "playwright-report/**",
     "test-results/**",
     "artifacts/**",
-    // Feature packs are parked/inactive until installed via /add-feature — they
-    // live outside src and must add zero weight to the app (tsconfig also excludes them).
-    "packs/**",
   ]),
   {
     files: ["src/**/*.{ts,tsx}"],

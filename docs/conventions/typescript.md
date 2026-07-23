@@ -1,6 +1,6 @@
 # TypeScript Conventions
 
-Strictness is the cheapest reviewer we have. The compiler config is part of the harness — do not loosen it per-file.
+Strictness is the cheapest reviewer we have. The compiler config is a project-wide gate — do not loosen it per-file.
 
 ## Rules
 

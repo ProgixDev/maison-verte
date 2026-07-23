@@ -1,7 +1,7 @@
 # gitleaks config — deep secret scanning (optional binary: brew install gitleaks).
 # Runs on pre-commit if installed, and via `pnpm secrets:scan`. The always-on
 # guard is `scripts/check-secrets.mjs` (no install needed), wired into `pnpm verify`.
-title = "nextjs-skeleton gitleaks"
+title = "maison-verte gitleaks"
 
 [extend]
 useDefault = true

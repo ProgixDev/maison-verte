@@ -6,7 +6,7 @@
 
 ## Context
 
-Hyper-growth codebases fail by business logic spreading everywhere ("bowl of mud"): every change has non-local effects, parallel work conflicts, and agents can't load a bounded context. Convention alone does not survive deadline pressure or autonomous agents.
+Codebases fail by business logic spreading everywhere ("bowl of mud"): every change has non-local effects, parallel work conflicts, and no one can reason about a change in isolation. Convention alone does not survive deadline pressure.
 
 ## Decision
 
@@ -16,12 +16,12 @@ Adopt the layer model `app → features → shared → core` with vertical featu
 
 | Option                         | Why not                                                                           |
 | ------------------------------ | --------------------------------------------------------------------------------- |
-| Convention only (docs, review) | Doesn't bind agents or hurried humans; erosion is one approved PR away.           |
+| Convention only (docs, review) | Doesn't bind a hurried contributor; erosion is one approved PR away.              |
 | Physical packages (monorepo)   | Stronger walls but heavier tooling; see ADR-0001.                                 |
 | dependency-cruiser             | Fine tool, but a second config/runtime next to ESLint; boundaries keeps one gate. |
 
 ## Consequences
 
-- Positive: conflict-free parallel work, safe feature deletion, bounded agent context, painted-door experiments are safe by construction.
+- Positive: conflict-free parallel work, safe feature deletion, and a reviewer can hold one slice in their head at a time.
 - Negative: occasional friction when code wants to be shared — resolved by deliberate promotion to `shared`, which is the point.
 - Follow-ups: boundary config changes require a superseding ADR.

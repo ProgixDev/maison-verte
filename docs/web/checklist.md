@@ -3,7 +3,7 @@
 The web equivalent of mobile store-readiness: what makes a Next.js app launch-ready. Severity:
 **P1** fix before launch · **P2** strongly recommended · **P3** polish. "Auto" = checked by
 `pnpm web:check` (`scripts/check-web-readiness.mjs`); "manual" = human review. `web:check` is a
-pre-launch gate, not part of `pnpm verify` (the bare skeleton carries placeholder identity).
+pre-launch gate, run deliberately rather than as part of `pnpm verify`.
 
 `id | sev | rule | how to verify | auto?`
 

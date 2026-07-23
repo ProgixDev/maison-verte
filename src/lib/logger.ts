@@ -1,5 +1,5 @@
 /**
- * Logger with automatic secret/PII redaction. AI-written code (and humans)
+ * Logger with automatic secret/PII redaction. Application code (and humans)
  * routinely log whole objects — including sessions, tokens, and headers — which
  * then leak into server logs and error trackers. This redacts sensitive keys and
  * token-shaped values before anything is emitted. Use it instead of `console.*`
@@ -37,7 +37,7 @@ export function redact(value: unknown, seen = new WeakSet<object>()): unknown {
 }
 
 function emit(level: "log" | "warn" | "error", args: unknown[]): void {
-  // eslint-disable-next-line no-console -- the logger is the sanctioned console wrapper
+  // The logger is the sanctioned console wrapper — everything else goes through it.
   console[level](...args.map((a) => redact(a)));
 }
 

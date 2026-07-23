@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 /**
- * Docs integrity gate: every relative markdown link in the knowledge tree must
- * resolve to a real file. Dead links silently break agent grounding — an agent
- * told to "see docs/x.md" that doesn't exist will improvise instead (badly).
+ * Docs integrity gate: every relative markdown link in the docs tree must
+ * resolve to a real file, so the documentation never points at something
+ * that has been moved or deleted.
  */
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 
-const TARGETS = ["docs", "specs", ".claude", "AGENTS.md", "CLAUDE.md", "README.md"];
+const TARGETS = ["docs", "README.md", "SECURITY.md"];
 const violations = [];
 
 function collect(path, out) {

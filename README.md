@@ -2,7 +2,7 @@
 
 Site web de **Maison Verte Québec** — un service qui aide les propriétaires québécois à obtenir leurs subventions de chauffage (LogisVert d’Hydro-Québec et le CAMT fédéral, jusqu’à 16 950 $) et les met en relation avec un installateur certifié RBQ.
 
-Refonte construite à partir d’un design Claude Design, recréée à l’identique en Next.js.
+Refonte du site, recréée à l’identique en Next.js à partir des maquettes.
 
 ## Stack
 
@@ -42,9 +42,12 @@ pnpm verify                           # la barrière locale complète (lint, typ
 
 ## À faire (prochaines étapes)
 
-- Brancher le formulaire d’admissibilité sur un vrai backend (Supabase / CRM) — l’action `recordLead` est un stub validé.
+- Brancher le formulaire d’admissibilité sur un vrai backend (CRM) — l’action `recordLead` est un stub validé.
 - Remplacer les coordonnées substituts (téléphone, courriels) dans l’en-tête, le pied de page et la page de confidentialité.
 
----
+## Documentation
 
-Ce dépôt est construit sur un harnais d’ingénierie piloté par agents : voir [AGENTS.md](AGENTS.md) pour le modèle de fonctionnement, et `docs/` pour les conventions.
+Les conventions de code, les frontières de modules, les décisions d’architecture (ADR) et la
+checklist de sécurité sont dans [`docs/`](docs/INDEX.md). À lire avant la première contribution :
+[architecture/overview.md](docs/architecture/overview.md) et
+[architecture/module-boundaries.md](docs/architecture/module-boundaries.md).
